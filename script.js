@@ -1,39 +1,40 @@
-const toggle = document.getElementById("toggle");
+const menuToggle = document.querySelector(".menu-toggle");
+const siteNav = document.querySelector(".site-nav");
+const navLinks = document.querySelectorAll(".site-nav a");
+const revealElements = document.querySelectorAll(".reveal");
+const profilePhoto = document.querySelector(".profile-photo");
+const profileFrame = document.querySelector(".hero-profile");
 
-toggle.onclick = () => {
-  document.body.classList.toggle("light");
-  toggle.textContent =
-    document.body.classList.contains("light") ? "🌞" : "🌙";
-};
+if (menuToggle && siteNav) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = siteNav.classList.toggle("is-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-/* PARTICLES BACKGROUND */
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for (let i = 0; i < 80; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      siteNav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
   });
 }
 
-function draw() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "cyan";
-
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
+if (profilePhoto && profileFrame) {
+  profilePhoto.addEventListener("error", () => {
+    profileFrame.classList.add("is-missing");
   });
-
-  requestAnimationFrame(draw);
 }
 
-draw();
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.18 }
+);
+
+revealElements.forEach((element) => observer.observe(element));
