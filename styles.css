@@ -33,7 +33,7 @@ html {
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background-image: url("BackgroundWallpaper.png");
+  background-image: url("assets/BackgroundWallpaper.png");
   background-size: contain;
   background-attachment: fixed;
   background-position: center;
@@ -51,7 +51,7 @@ body::before {
   z-index: 0;
   background: radial-gradient(circle at 25% 30%, rgba(10, 88, 130, 0.3), transparent 35%),
               radial-gradient(circle at 75% 60%, rgba(10, 130, 88, 0.25), transparent 40%);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 a {
@@ -234,11 +234,16 @@ main,
 main {
   width: min(var(--container), calc(100% - 2rem));
   margin: 0 auto;
-  padding: 2rem 0 4rem;
+  padding: calc(5rem + 3px) 0 4rem;
+}
+
+.site-footer {
+    padding: 2rem 0;
+    text-align: center;
 }
 
 .section {
-  padding: 3.5rem 0;
+  padding: 2rem 0;
 }
 
 .hero {
@@ -255,8 +260,8 @@ main {
 
 .eyebrow {
   margin: 0 0 0.8rem;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
@@ -746,8 +751,8 @@ body[data-theme="light"] .hero-overlay {
 .contact-card,
 .content-card {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(6, 10, 21, 0.55);
-  backdrop-filter: blur(12px);
+  background: rgba(6, 10, 21, 0.35);
+  backdrop-filter: blur(16px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -768,40 +773,82 @@ body[data-theme="light"] .hero-overlay {
   font-family: "Manrope", sans-serif;
 }
 
-.content-card-body {
-  padding: 1.2rem;
+.content-card-media.circular-logo {
+    padding: 1rem;
+    height: 180px;
+    background: transparent;
+    border-bottom: none;
 }
 
-.content-card h3 {
+.content-card-media.circular-logo img {
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.content-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-card-body {
+  padding: 1.2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-card-body h3 {
   margin: 0 0 0.5rem;
   font-family: "Manrope", sans-serif;
   font-size: 1.1rem;
 }
 
-.content-card p {
+.content-card-body p {
   margin: 0;
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.6;
+  flex-grow: 1;
+}
+.content-card-body .tag-list {
+    margin-top: auto;
+    padding-top: 1rem;
 }
 
 .roadmap {
   position: relative;
-  display: flex;
-  gap: 1rem;
-  padding: 1.5rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
+  padding-bottom: 3rem;
 }
 
 .roadmap::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+    height: 8px;
 }
+
+.roadmap::-webkit-scrollbar-track {
+    background: var(--line);
+    border-radius: 999px;
+}
+
+.roadmap::-webkit-scrollbar-thumb {
+    background: var(--accent-2);
+    border-radius: 999px;
+}
+
 
 .roadmap::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 90px; /* Vertically center with the media element */
   left: 0;
   right: 0;
   height: 2px;
@@ -812,40 +859,126 @@ body[data-theme="light"] .hero-overlay {
 
 .roadmap-card {
   position: relative;
-  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
   padding: 1.5rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   background: var(--panel);
   backdrop-filter: blur(14px);
   z-index: 1;
+  min-width: 280px;
+}
+
+.roadmap-media {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  border: 2px solid var(--line);
+  margin-bottom: 1rem;
+}
+
+.roadmap-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.roadmap-body {
+  flex-grow: 1;
 }
 
 .roadmap-card::after {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 80px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--accent-2);
-  border: 2px solid var(--bg);
+  border: 3px solid var(--bg);
   box-shadow: 0 0 10px rgba(162, 136, 255, 0.5);
 }
 
 .roadmap-card h3 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.25rem;
   font-family: "Manrope", sans-serif;
+  font-size: 1.1rem;
 }
 
 .roadmap-card p {
-  margin: 0;
+  margin: 0 0 0.5rem;
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.6;
 }
+
+.roadmap-card strong {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.roadmap-year {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-3);
+  letter-spacing: 0.05em;
+}
+
+.contact-section {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.contact-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--accent);
+}
+
+.contact-link:hover .contact-icon {
+  color: var(--text);
+}
+
 
 .hero-points {
   display: flex;
