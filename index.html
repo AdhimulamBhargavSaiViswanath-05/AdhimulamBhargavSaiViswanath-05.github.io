@@ -4,112 +4,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhargav Sai | AI Engineer</title>
-
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<header>
-  <div class="nav">
-    <h2>Bhargav Sai</h2>
-    <button id="themeToggle">🌙</button>
-  </div>
+<header class="nav">
+  <h2>Bhargav Sai</h2>
+  <button id="toggle">🌙</button>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <h1>Adhimulam Bhargav Sai Viswanath</h1>
-  <p class="tagline">AI/ML Engineer • Data Science Enthusiast • Problem Solver</p>
 
-  <p class="desc">
-    B.Tech CSE (AI & ML) student at VVIT building real-world AI systems using Machine Learning,
-    NLP, and Data Science. Passionate about solving impactful problems with intelligent systems.
-  </p>
+  <!-- Animated Background -->
+  <canvas id="particles"></canvas>
 
-  <div class="buttons">
-    <a href="#projects">View Projects</a>
-    <a href="#about">About</a>
-    <a href="https://github.com/AdhimulamBhargavSaiViswanath-05" target="_blank">GitHub</a>
+  <!-- Robots -->
+  <img src="https://i.imgur.com/2R8RZ5H.png" class="robots">
+
+  <!-- Profile -->
+  <img src="profile.jpg" class="profile">
+
+  <!-- Brain -->
+  <img src="https://i.imgur.com/Jp5R9Qx.png" class="brain">
+
+  <!-- Content -->
+  <div class="content">
+
+    <p class="top-text">
+      B.Tech CSE - AI & ML Student at VVIT | Exploring AI & Machine Learning
+    </p>
+
+    <h1>ADHIMULAM BHARGAV SAI VISWANATH</h1>
+
+    <p class="quote">
+      "If you don't like something change it, if you can't change it,
+      change the way you think about it"
+    </p>
+
   </div>
+
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>
-    I am focused on building intelligent systems using AI & ML. I enjoy solving real-world problems,
-    learning new technologies, and building scalable projects in data science and automation.
-  </p>
-</section>
-
-<!-- SKILLS -->
 <section class="section">
-  <h2>Skills</h2>
-  <div class="grid">
-    <div class="card">Python</div>
-    <div class="card">Java</div>
-    <div class="card">C</div>
-    <div class="card">Machine Learning</div>
-    <div class="card">NLP</div>
-    <div class="card">Data Analysis</div>
-    <div class="card">Linux</div>
-    <div class="card">Git</div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="section">
   <h2>Projects</h2>
 
-  <div class="project-card">
-    <h3>Street Sign Transliteration System</h3>
-    <p>AI system for multilingual transliteration using NLP techniques.</p>
-    <span>AI • NLP • Deep Learning</span>
-  </div>
-
-  <div class="project-card">
-    <h3>AI Timetable Generator</h3>
-    <p>Constraint-based system for automatic timetable scheduling.</p>
-    <span>AI • CSP</span>
-  </div>
-
-  <div class="project-card">
-    <h3>Bus Demand Prediction System</h3>
-    <p>ML model for predicting passenger demand using real datasets.</p>
-    <span>ML • Data Science</span>
-  </div>
-
-  <div class="project-card">
-    <h3>Amazon Trend Analysis</h3>
-    <p>Web scraping + analytics for product trend insights.</p>
-    <span>Python • Scraping</span>
+  <div class="cards">
+    <div class="card">AI Timetable Generator</div>
+    <div class="card">NLP Stemming Engine</div>
+    <div class="card">Bus Prediction System</div>
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section class="section">
-  <h2>Education</h2>
-  <div class="card">
-    <p><b>B.Tech CSE (AI & ML)</b> — VVIT (CGPA 8.4)</p>
-    <p>Intermediate — Sri Chaitanya (939/1000)</p>
-    <p>SSC — Viveka High School (600/600)</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section">
-  <h2>Contact</h2>
-  <p>Email: bhargavsaiadhimulam12@gmail.com</p>
-  <p>LinkedIn: linkedin.com/in/adhimulam-bhargav-sai</p>
-  <p>GitHub: github.com/AdhimulamBhargavSaiViswanath-05</p>
-</section>
-
-<footer>
-  <p>© 2026 Bhargav Sai | AI/ML Portfolio</p>
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
