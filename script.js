@@ -532,25 +532,46 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 })();
 
-// Theme Toggle Logic
+// Theme Toggle Logic Refined
 const themeBtn = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check for saved preference
+const updateTheme = (isLight) => {
+  body.classList.toggle('light-mode', isLight);
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+};
+
+// Initial state
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'light') {
-  body.classList.add('light-mode');
-  // Update the data-theme attribute if you still use it for other logic
-  body.setAttribute('data-theme', 'light');
+const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+  updateTheme(true);
 }
 
 themeBtn.addEventListener('click', () => {
-  body.classList.toggle('light-mode');
-  const isLight = body.classList.contains('light-mode');
-  
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  body.setAttribute('data-theme', isLight ? 'light' : 'dark');
+  updateTheme(!body.classList.contains('light-mode'));
 });
+
+// Custom Cursor Follower
+const follower = document.querySelector('.cursor-follower');
+document.addEventListener('mousemove', (e) => {
+  if (follower) {
+    follower.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+  }
+});
+
+// Intersection Observer for Reveal
+const observerOptions = { threshold: 0.1 };
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // Parallax Mouse Effect
 document.addEventListener('mousemove', (e) => {

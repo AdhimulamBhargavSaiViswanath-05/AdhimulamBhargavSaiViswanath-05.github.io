@@ -1,35 +1,42 @@
-/* Project logos in cards */
-.project-logo {
-  display: block;
-  max-width: 54px;
-  max-height: 54px;
-  margin: 0 auto 0.5em auto;
-  border-radius: 0.5em;
-  background: #fff;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+/* Education and Logo Alignment */
+.edu-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem;
+  background: var(--glass);
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 1.5rem;
+  text-align: left !important;
+}
+
+.edu-logo, .project-logo {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 0 !important;
 }
 
 .project-card-inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
 }
 
-/* Education logos */
-.edu-logo {
-  display: block;
-  max-width: 48px;
-  max-height: 48px;
-  margin: 0 auto 0.5em auto;
-  border-radius: 0.5em;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+.project-desc {
+  flex-grow: 1; /* This ensures the description expands to push buttons to the bottom */
+  margin-bottom: 1.5rem;
+  color: var(--text-2);
 }
 
-.edu-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.proj-link {
+  margin-top: auto;
 }
 
 /* Certification logos row */
@@ -119,29 +126,29 @@
   opacity: 0.32;
   filter: blur(0.5px);
 }
-/* Brain Watermark Overlay */
+/* High-Consistency Watermark: Stays visible & fixed during scroll */
 .brain-watermark-wrap {
-  position: absolute;
+  position: fixed; /* Keeps it constant during scrolling */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 40vw;
-  max-width: 600px;
-  min-width: 250px;
+  width: 50vw;
+  max-width: 800px;
+  min-width: 300px;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.15;
+  z-index: -1; /* Behind everything */
+  opacity: 0.25; /* Increased opacity as requested */
 }
 
 .brain-overlay, .circuit-overlay, .ml-pipeline-overlay {
   position: absolute;
   width: 100%;
   height: auto;
-  mix-blend-mode: screen; /* Overlapping mode */
+  mix-blend-mode: screen; 
 }
 
 [data-theme="light"] .brain-overlay, 
@@ -287,41 +294,347 @@
    Background: Canvas neural-network animation (no static image)
    ============================================================ */
 
-/* ---- TOKENS & VARIABLES ---- */
+/* ---- THE EMERALD MATRIX: REFINED TOKENS ---- */
 :root {
-  --bg: #050705;
-  --bg-2: #0e120d;
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-2: #1c2219;
-  --line: rgba(255, 255, 255, 0.1);
-  --line-h: rgba(255, 255, 255, 0.2);
-  --text: #e2e8d8;
-  --text-2: rgba(255, 255, 255, 0.7); /* Improved contrast */
-  --text-3: rgba(255, 255, 255, 0.5);
-  --accent: #00d2ff;
-  --accent-glow: rgba(0, 210, 255, 0.4);
+  --bg: #0a0a0a;
+  --bg-2: #111111;
+  --accent: #00FF9C; /* Cyber-Emerald */
+  --accent-rgb: 0, 255, 156;
+  --accent-dark: #00bf75;
+  --text: #e0e0e0;
+  --text-2: rgba(224, 224, 224, 0.7);
+  --text-3: rgba(224, 224, 224, 0.45);
+  --line: rgba(255, 255, 255, 0.08);
   --glass: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --card-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  --grid-color: rgba(255, 255, 255, 0.05);
+  --card-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  --section-pad: clamp(3rem, 6vh, 5rem); /* Reduced from 100px for tighter layout */
 }
 
 body.light-mode {
-  --bg: #f8f9fa;
+  --bg: #f5f7f2; /* Soft Paper */
   --bg-2: #ffffff;
-  --surface: rgba(0, 0, 0, 0.02);
-  --surface-2: #f1f3f5;
+  --accent: #008f58; /* Deeper Green */
+  --accent-rgb: 0, 143, 88;
+  --text: #121212;
+  --text-2: #404040;
+  --text-3: #707070;
   --line: rgba(0, 0, 0, 0.08);
-  --line-h: rgba(0, 0, 0, 0.15);
-  --text: #1a1a1a;
-  --text-2: #4a4a4a;
-  --text-3: #6c757d;
-  --accent: #0056b3; /* Electric Blue */
-  --accent-glow: rgba(0, 86, 179, 0.2);
   --glass: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(0, 0, 0, 0.1);
-  --card-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  --grid-color: rgba(0, 0, 0, 0.03);
+  --card-shadow: 0 10px 30px rgba(0, 80, 50, 0.05);
+}
+
+.section {
+  padding: var(--section-pad) clamp(1rem, 5vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Project Card Uniformity */
+.projects-secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+  transform: scale(1.02) rotateY(3deg);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(var(--accent-rgb), 0.15);
+}
+
+.proj-link {
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Skill Tags Dashboard */
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.skill-list li {
+  background: #1e1e1e;
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.skill-list li:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+/* Achievement Badge */
+.hero-award {
+  position: relative;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--accent), #00bf75);
+  animation: borderPulse 3s infinite;
+}
+
+@keyframes borderPulse {
+  0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(var(--accent-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); }
+}
+
+.achievement-badge {
+  background: var(--accent);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Hero Centering */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Site Navigation */
+.site-nav {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex !important;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.6rem 2rem;
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  z-index: 1000;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.site-nav a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.site-nav a:hover, .site-nav a.is-active {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+.nav-cta {
+  background: var(--accent) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  border-radius: 50px !important;
+}
+
+/* Mobile Nav Fixed Bottom */
+@media (max-width: 768px) {
+  .site-nav {
+    top: auto;
+    bottom: 1.5rem;
+    width: 90%;
+    justify-content: space-around;
+    padding: 0.8rem;
+    background: rgba(10, 10, 10, 0.9);
+  }
+  
+  .site-nav a span {
+    display: none; /* Hide text on small screens, users follow icons usually or just generic order */
+  }
+}
+
+/* Vertical Timeline Alignment */
+.section-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center alignment for the "Matrix" look */
+  text-align: center;
+  gap: 0.5rem; /* Reduced from 1rem */
+  margin-bottom: 2rem; /* Reduced from 4rem */
+  border-bottom: none;
+  position: relative;
+}
+
+.section-label::after {
+  content: "";
+  width: 1px;
+  height: 30px; /* Reduced from 60px */
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  margin-top: 0.5rem; /* Reduced from 1rem */
+}
+
+.section-number {
+  font-size: 0.9rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+/* Skills Pill Grid */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.skill-block {
+  padding: 2.5rem;
+  width: 100%;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.skill-list li {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-2);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-list li::before { display: none; } /* Remove bullet */
+
+.skill-list li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.1);
+}
+
+/* Project Cards: 3D Refinement */
+.project-card {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  perspective: 1000px;
+}
+
+.project-card:hover {
+  transform: rotateY(3deg) translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.18);
+}
+
+/* SIH Pulse Animation */
+.hero-award {
+  animation: borderPulse 3s infinite;
+}
+
+@keyframes borderPulse {
+  0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(var(--accent-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); }
+}
+
+/* Button Refinement */
+.hire-btn {
+  background: var(--accent);
+  color: #000 !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.btn-ghost {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+/* Custom Cursor Trail */
+.cursor-follower {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(var(--accent-rgb), 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+  mix-blend-mode: screen;
+}
+
+/* Score Badge */
+.score-badge {
+  background: var(--accent);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 10px;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 /* Engineering Dot Grid Background */
@@ -901,14 +1214,34 @@ main{padding-top:var(--nav-h);position:relative;z-index:2}
 }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-.hero-scroll-hint{
-  position:absolute;bottom:2rem;left:clamp(1rem,4vw,2.5rem);
-  display:flex;align-items:center;gap:0.4rem;
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.72rem;color:var(--text-3);letter-spacing:0.1em;
-  animation:fadeUp 1.4s ease 1s both;
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: clamp(1rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  animation: fadeUp 1.4s ease 1s both;
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.scroll-arrow {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-5px);}
+  60% {transform: translateY(-3px);}
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
 
 /* ---- ABOUT ---- */
 .about-layout{display:grid;grid-template-columns:1fr 280px;gap:3rem;align-items:start}
