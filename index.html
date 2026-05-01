@@ -8,19 +8,20 @@
   <title>Bhargav Sai Viswanath</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <div class="animated-bg">
-  <canvas id="bg-binary-rain"></canvas>
-  <canvas id="bg-stars"></canvas>
-  <canvas id="bg-neural"></canvas>
-    <!-- Placeholders for SVG/PNG overlays -->
+    <div id="tsparticles"></div>
+    <canvas id="bg-binary-rain"></canvas>
+    <canvas id="bg-stars"></canvas>
+    <!-- Overlays -->
     <div class="brain-watermark-wrap">
       <img src="assets/brain.svg" class="brain-overlay" alt="Brain" />
-      <img src="assets/ML_PipeLine_WorkFlow.svg" class="ml-pipeline-svg-behind-brain" alt="ML Pipeline Workflow" />
+      <img src="assets/circuit.svg" class="circuit-overlay" alt="Circuit" />
+      <img src="assets/ML_PipeLine_WorkFlow.svg" class="ml-pipeline-overlay" alt="ML Pipeline Workflow" />
     </div>
     <img src="assets/robot-left.svg" class="robot-left" alt="Robot" />
     <img src="assets/robot-right.svg" class="robot-right" alt="Robot" />
@@ -44,7 +45,6 @@
   <header class="site-header" role="banner">
     <a href="#home" class="brand" aria-label="Adhimulam Bhargav Sai Viswanath Home">
       <img src="assets/profile.jpg" class="brand-profile-pic" alt="Profile" />
-      <span class="brand-initials" aria-hidden="true">BSV</span>
       <span class="brand-name">Adhimulam Bhargav Sai Viswanath</span>
     </a>
     <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main navigation">
@@ -57,6 +57,10 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-end">
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark mode">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
       <a href="mailto:bhargavsaiadhimulam12@gmail.com" class="hire-btn">Hire me</a>
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Toggle navigation">
         <span class="bar"></span>
@@ -86,13 +90,14 @@
       <div class="hero-inner">
         <div class="hero-label">
           <span class="status-dot" aria-hidden="true"></span>
-          Available for internships &amp; collaborations
+          Available for internships & collaborations
         </div>
-        <!-- Removed hero heading and sub as per user request -->
+        
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">View my work</a>
           <a href="#contact" class="btn btn-ghost">Get in touch</a>
         </div>
+
         <div class="hero-meta">
           <span class="meta-tag">Python · Java · SQL</span>
           <span class="meta-sep">/</span>
@@ -102,43 +107,12 @@
         </div>
       </div>
 
-
-      
-
-      
-        <div class="hero-scroll-hint" aria-hidden="true">
-          <span>scroll</span>
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-      </section>
-    
-      <!-- ═══════════════ ABOUT ═══════════════ -->
-      <section id="about" class="section" aria-labelledby="about-heading">
-        <div class="section-label reveal">
-          <span class="section-number">01</span>
-          <span class="section-title" id="about-heading">About</span>
-        </div>
-        <div class="about-layout">
-          <div class="about-text reveal">
-            <p class="about-lead">I'm an AI &amp; ML engineering student who builds things that think.</p>
-            <p class="about-body">From designing constraint-based timetable systems to leading a multilingual street-sign transliteration tool for India, I gravitate toward problems where software meets real human needs. I'm equally comfortable working deep in a backend pipeline or exploring model behavior at the research edge.</p>
-            <p class="about-body">I scored a perfect 600/600 in my 10th class, 939/1000 in Intermediate, and currently hold an 8.4 CGPA — but what drives me more is shipping projects that actually work.</p>
-          </div>
-          <aside class="about-stats reveal" aria-label="Quick facts">
-            <div class="stat-card"><span class="stat-num">8.4</span><span class="stat-desc">CGPA (up to III–I)</span></div>
-            <div class="stat-card"><span class="stat-num">6+</span><span class="stat-desc">Projects shipped</span></div>
-            <div class="stat-card"><span class="stat-num">500+</span><span class="stat-desc">Problems on CodeChef</span></div>
-            <div class="stat-card"><span class="stat-num">Top 7</span><span class="stat-desc">SIH National ranking</span></div>
-          </aside>
-        </div>
-      </section>
-
       <div class="hero-scroll-hint" aria-hidden="true">
         <span>scroll</span>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </section>
-
+    
     <!-- ═══════════════ ABOUT ═══════════════ -->
     <section id="about" class="section" aria-labelledby="about-heading">
       <div class="section-label reveal">
@@ -148,8 +122,7 @@
       <div class="about-layout">
         <div class="about-text reveal">
           <p class="about-lead">I'm an AI &amp; ML engineering student who builds things that think.</p>
-          <p class="about-body">From designing constraint-based timetable systems to leading a multilingual street-sign transliteration tool for India, I gravitate toward problems where software meets real human needs. I'm equally comfortable working deep in a backend pipeline or exploring model behavior at the research edge.</p>
-          <p class="about-body">I scored a perfect 600/600 in my 10th class, 939/1000 in Intermediate, and currently hold an 8.4 CGPA — but what drives me more is shipping projects that actually work.</p>
+          <p class="about-body">From designing constraint-based timetable systems to leading a multilingual street-sign transliteration tool for India, I gravitate toward problems where software meets real human needs. I scored a perfect 600/600 in my 10th class, 939/1000 in Intermediate, and currently hold an 8.4 CGPA — but what drives me more is shipping projects that actually work.</p>
         </div>
         <aside class="about-stats reveal" aria-label="Quick facts">
           <div class="stat-card"><span class="stat-num">8.4</span><span class="stat-desc">CGPA (up to III–I)</span></div>
@@ -266,6 +239,7 @@
           </article>
         </div>
       </div>
+      <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/" target="_blank" class="more-link">More projects are on GitHub →</a>
     </section>
 
     <!-- ═══════════════ EDUCATION ═══════════════ -->
@@ -275,11 +249,10 @@
         <span class="section-title" id="education-heading">Education</span>
       </div>
       <div class="edu-list">
-        <img src="assets/VVIT_Logo.png" alt="VVIT Logo" class="edu-logo" />
         <div class="edu-card reveal">
-          <img src="assets/srichaitanya_clg_Logo.jpg" alt="Sri Chaitanya Junior College Logo" class="edu-logo" />
-          <div class="edu-period">2023 – 2027</div>
+          <img src="assets/VVIT_Logo.png" alt="VVIT Logo" class="edu-logo" />
           <div class="edu-content">
+            <div class="edu-period">2023 – 2027</div>
             <h3 class="edu-degree">B.Tech – CSE (AI &amp; ML)</h3>
             <p class="edu-institution">Vasireddy Venkatadri Institute of Technology, Namburu</p>
             <p class="edu-score">CGPA 8.4 <span class="edu-upto">(up to III–I)</span></p>
@@ -287,13 +260,90 @@
           <div class="edu-badge">Current</div>
         </div>
         <div class="edu-card reveal">
-          <img src="assets/Vivek_School_Logo.png" alt="Viveka High School Logo" class="edu-logo" />
-          <div class="edu-period">2020 – 2021</div>
+          <img src="assets/srichaitanya_clg_Logo.jpg" alt="Sri Chaitanya Logo" class="edu-logo" />
           <div class="edu-content">
+            <div class="edu-period">2021 – 2023</div>
             <h3 class="edu-degree">Intermediate – MPC</h3>
             <p class="edu-institution">Sri Chaitanya Junior College, Tenali</p>
             <p class="edu-score">939 / 1000</p>
           </div>
+        </div>
+        <div class="edu-card reveal">
+          <img src="assets/Vivek_School_Logo.png" alt="Viveka School Logo" class="edu-logo" />
+          <div class="edu-content">
+            <div class="edu-period">2020 – 2021</div>
+            <h3 class="edu-degree">Secondary School (CBSE)</h3>
+            <p class="edu-institution">Viveka High School, Tenali</p>
+            <p class="edu-score">GPA 10.0 <span class="edu-perfect">(600/600)</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CERTIFICATIONS ═══════════════ -->
+    <section id="certifications" class="section" aria-labelledby="certifications-heading">
+      <div class="section-label reveal">
+        <span class="section-number">05</span>
+        <span class="section-title" id="certifications-heading">Certifications</span>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card reveal">
+          <div class="cert-icon cert-aws">AWS</div>
+          <div class="cert-info">
+            <div class="cert-name">Cloud Practitioner</div>
+            <div class="cert-issuer">AWS</div>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon cert-py">PCAP</div>
+          <div class="cert-info">
+            <div class="cert-name">Python Essentials</div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon cert-nptel">NPTEL</div>
+          <div class="cert-info">
+            <div class="cert-name">Cloud Computing</div>
+            <div class="cert-issuer">IIT Kharagpur</div>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon cert-google">DATA</div>
+          <div class="cert-info">
+            <div class="cert-name">Data Analytics</div>
+            <div class="cert-issuer">Google</div>
+          </div>
+        </div>
+      </div>
+      <a href="https://linkedin.com/in/bhargav-sai-viswanath-adhimulam" target="_blank" class="more-link">More certifications are on LinkedIn →</a>
+    </section>
+
+    <!-- ═══════════════ ACHIEVEMENTS ═══════════════ -->
+    <section id="achievements" class="section" aria-labelledby="achievements-heading">
+      <div class="section-label reveal">
+        <span class="section-number">06</span>
+        <span class="section-title" id="achievements-heading">Achievements</span>
+      </div>
+      <div class="achievements-list">
+        <div class="achievement-item award-highlight reveal">
+          <div class="achievement-icon">🏆</div>
+          <div class="achievement-content">
+            <h3 class="achievement-title">SIH 2024 National Finalist</h3>
+            <p class="achievement-desc">Smart India Hackathon – Top 7 National Ranking for LipiSathi under the Ministry of Education.</p>
+          </div>
+          <div class="achievement-badge">Winner</div>
+        </div>
+        <div class="achievement-item reveal">
+          <div class="achievement-icon">🎖️</div>
+          <div class="achievement-content">
+            <h3 class="achievement-title">Problem Solving Milestone</h3>
+            <p class="achievement-desc">Completed 500+ algorithmic problems across CodeChef and HackerRank.</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://linkedin.com/in/bhargav-sai-viswanath-adhimulam" target="_blank" class="more-link">More achievements are on LinkedIn →</a>
+    </section>
         </div>
         <div class="edu-card reveal">
           <div class="edu-period">2019 – 2020</div>
@@ -340,7 +390,7 @@
         <span class="section-title" id="achievements-heading">Achievements</span>
       </div>
       <div class="achievements-list">
-        <div class="achievement-item reveal">
+        <div class="achievement-item award-highlight reveal">
           <div class="achievement-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1l2.39 4.84L18 6.76l-4 3.9.94 5.5L10 13.6l-4.94 2.57.94-5.5L2 6.76l5.61-.92L10 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
           <div class="achievement-body"><h4 class="achievement-title">Smart India Hackathon 2025</h4><p class="achievement-desc">National Winner Runner-Up (Top 7) · Internal Round — Top 50 out of 256+ teams at VVIT</p></div>
           <div class="achievement-badge">National WR 6</div>
@@ -398,16 +448,41 @@
             <div class="contact-link-body"><span class="contact-link-label">GitHub</span><span class="contact-link-value">AdhimulamBhargavSaiViswanath-05</span></div>
             <svg class="contact-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
+          <a href="https://www.codechef.com/users/vvit23bq1a4201" target="_blank" rel="noreferrer" class="contact-link-row" aria-label="CodeChef profile">
+            <div class="contact-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.28 12.01l4.08 4.08-4.08 4.08-1.41-1.41 2.67-2.67-2.67-2.67 1.41-1.41zM9.72 12.01L5.64 16.09l4.08 4.08 1.41-1.41-2.67-2.67 2.67-2.67-1.41-1.41z"/></svg></div>
+            <div class="contact-link-body"><span class="contact-link-label">CodeChef</span><span class="contact-link-value">vvit23bq1a4201</span></div>
+            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://codeforces.com/profile/bhargavsai_2005" target="_blank" rel="noreferrer" class="contact-link-row" aria-label="Codeforces profile">
+            <div class="contact-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 7.5h3V24h-3V7.5zm10.5-6h3V24h-3V1.5zm-5.25 9h3V24h-3V10.5z"/></svg></div>
+            <div class="contact-link-body"><span class="contact-link-label">Codeforces</span><span class="contact-link-value">bhargavsai_2005</span></div>
+            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://smartinterviews.in/profile/bhargavsai_2005" target="_blank" rel="noreferrer" class="contact-link-row" aria-label="SmartInterviews profile">
+            <div class="contact-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L1 21h22L12 2zm0 3.45l8.15 14.1H3.85L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg></div>
+            <div class="contact-link-body"><span class="contact-link-label">SmartInterviews</span><span class="contact-link-value">bhargavsai_2005</span></div>
+            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://www.hackerrank.com/profile/bhargavsai_2005" target="_blank" rel="noreferrer" class="contact-link-row" aria-label="HackerRank profile">
+            <div class="contact-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.623 11.233h-1.63a1.415 1.415 0 0 1-1.41 1.417c-.777 0-1.41-.632-1.41-1.417 0-.776.633-1.417 1.41-1.417.777 0 1.41.641 1.41 1.417h1.63c0-1.674-1.365-3.04-3.04-3.04a3.033 3.033 0 0 0-3.041 3.04c0 1.673 1.366 3.04 3.04 3.04a3.033 3.033 0 0 0 3.041-3.04zM24 0v24H0V0h24zM12 2.65a9.344 9.344 0 0 0-9.35 9.35 9.343 9.343 0 0 0 9.35 9.35 9.344 9.344 0 0 0 9.35-9.35A9.344 9.344 0 0 0 12 2.65z"/></svg></div>
+            <div class="contact-link-body"><span class="contact-link-label">HackerRank</span><span class="contact-link-value">bhargavsai_2005</span></div>
+            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
+    <div class="status-indicator">
+      <span class="status-label"><span class="status-dot-pulse"></span> System Ready / Available for Hire</span>
+    </div>
     <p class="footer-copy">Designed &amp; built by Bhargav Sai Viswanath · 2025</p>
-    <p class="footer-copy footer-sub">B.Tech CSE (AI &amp; ML) · VVIT, Namburu · Open to internships</p>
+    <p class="footer-copy footer-sub">B.Tech CSE (AI &amp; ML) · VVIT, Namburu</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/all@3.0.3/tsparticles.all.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

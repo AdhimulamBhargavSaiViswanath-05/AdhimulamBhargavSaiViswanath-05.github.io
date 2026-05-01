@@ -171,6 +171,36 @@
   const NODE_COLOR = [78, 95, 68];     // muted green-grey
 
   let W, H, nodes, edges, raf;
+  let draggedNode = null;
+  let mouseInteraction = { x: 0, y: 0, active: false };
+
+  canvas.addEventListener('mousedown', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    
+    // Find closest node within reach
+    nodes.forEach(n => {
+      const dist = Math.sqrt((n.x - mx)**2 + (n.y - my)**2);
+      if (dist < 30) draggedNode = n;
+    });
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouseInteraction.x = e.clientX - rect.left;
+    mouseInteraction.y = e.clientY - rect.top;
+    mouseInteraction.active = true;
+
+    if (draggedNode) {
+      draggedNode.x = mouseInteraction.x;
+      draggedNode.y = mouseInteraction.y;
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    draggedNode = null;
+  });
 
   // ---- RESIZE ----
   function resize() {
@@ -226,8 +256,22 @@
 
     // Update node positions
     nodes.forEach(n => {
-      n.x += n.vx;
-      n.y += n.vy;
+      if (n !== draggedNode) {
+        n.x += n.vx;
+        n.y += n.vy;
+
+        // Mouse attraction/repulsion for all nodes
+        if (mouseInteraction.active) {
+            const dx = mouseInteraction.x - n.x;
+            const dy = mouseInteraction.y - n.y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < 150) {
+                n.x += dx * 0.01;
+                n.y += dy * 0.01;
+            }
+        }
+      }
+
       if (n.x < -20) n.x = W + 20;
       if (n.x > W + 20) n.x = -20;
       if (n.y < -20) n.y = H + 20;
@@ -438,3 +482,84 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
   setInterval(addLines, 4200);
 })();
+
+// tsParticles Neural Network Setup
+(async () => {
+  await loadAll(tsParticles);
+
+  await tsParticles.load({
+    id: "tsparticles",
+    options: {
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onClick: { enable: true, mode: "push" },
+          onHover: { enable: true, mode: "grab" },
+        },
+        modes: {
+          push: { quantity: 4 },
+          grab: { distance: 200, links: { opacity: 0.5 } },
+        },
+      },
+      particles: {
+        color: { value: "#ffffff" },
+        links: {
+          color: "#ffffff",
+          distance: 150,
+          enable: true,
+          opacity: 0.3,
+          width: 1,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: { default: "out" },
+          random: false,
+          speed: 1.5,
+          straight: false,
+        },
+        number: {
+          density: { enable: true, area: 800 },
+          value: 80,
+        },
+        opacity: { value: 0.4 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 3 } },
+      },
+      detectRetina: true,
+      background: { color: "transparent" },
+    },
+  });
+})();
+
+// Parallax Mouse Effect
+document.addEventListener('mousemove', (e) => {
+  const moveX = (e.clientX - window.innerWidth / 2) * 0.015;
+  const moveY = (e.clientY - window.innerHeight / 2) * 0.015;
+  
+  // Target background elements with specific center-alignment handling
+  const brain = document.querySelector('.brain-watermark-wrap');
+  const robotL = document.querySelector('.robot-left');
+  const robotR = document.querySelector('.robot-right');
+  const hero = document.querySelector('.hero-inner');
+
+  if(brain) brain.style.transform = `translate(calc(-50% + ${moveX * 0.5}px), calc(-50% + ${moveY * 0.5}px))`;
+  if(robotL) robotL.style.transform = `translate(${moveX * 0.8}px, calc(-50% + ${moveY * 0.8}px))`;
+  if(robotR) robotR.style.transform = `translate(${moveX * 0.8}px, calc(-50% + ${moveY * 0.8}px))`;
+  if(hero) hero.style.transform = `translate(${moveX * 0.3}px, ${moveY * 0.3}px)`;
+});
+
+// Theme Toggle Functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  
+  document.documentElement.setAttribute('data-theme', storedTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+});
