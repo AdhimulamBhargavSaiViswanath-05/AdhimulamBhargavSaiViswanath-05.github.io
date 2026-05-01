@@ -532,6 +532,26 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 })();
 
+// Theme Toggle Logic
+const themeBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+  body.classList.add('light-mode');
+  // Update the data-theme attribute if you still use it for other logic
+  body.setAttribute('data-theme', 'light');
+}
+
+themeBtn.addEventListener('click', () => {
+  body.classList.toggle('light-mode');
+  const isLight = body.classList.contains('light-mode');
+  
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  body.setAttribute('data-theme', isLight ? 'light' : 'dark');
+});
+
 // Parallax Mouse Effect
 document.addEventListener('mousemove', (e) => {
   const moveX = (e.clientX - window.innerWidth / 2) * 0.015;
