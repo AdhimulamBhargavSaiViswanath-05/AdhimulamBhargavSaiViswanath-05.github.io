@@ -1,67 +1,18 @@
-(function() {
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  let columns, drops;
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    columns = Math.floor(width / 18);
-    drops = Array(columns).fill(0).map(() => Math.random() * height);
-  }
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.save();
-    ctx.globalAlpha = 0.7;
-    ctx.fillStyle = ctx.createLinearGradient(0, 0, width, height);
-    ctx.fillStyle.addColorStop?.(0, '#bff');
-    ctx.fillStyle.addColorStop?.(0.5, '#6ef');
-    ctx.fillStyle.addColorStop?.(1, '#0f0');
-    ctx.font = 'bold 18px JetBrains Mono, monospace';
-    for (let i = 0; i < columns; i++) {
-      const text = Math.random() > 0.5 ? '0' : '1';
-      const x = i * 18;
-      const y = drops[i];
-      ctx.shadowColor = '#fff';
-      ctx.shadowBlur = 8;
-      ctx.fillText(text, x, y);
-      ctx.shadowBlur = 0;
-      // Slower speed for subtle effect
-      drops[i] += 7 + Math.random() * 2.5;
-      if (drops[i] > height + 40 || Math.random() > 0.992) {
-        drops[i] = Math.random() * -100;
-      }
-    }
-    ctx.restore();
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize', resize);
-  resize();
-  draw();
-})();
 'use strict';
 
 /* ═══════════════════════════════════════════════════════════════
    NEURAL NETWORK CANVAS BACKGROUND
-   Replaces the static BackgroundWallpaper.png entirely.
-   Draws animated nodes + edges that pulse like a neural net,
-   matching the AI/ML theme — far more professional than clipart.
    ═══════════════════════════════════════════════════════════════ */
-
 (function initBackground() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  // Respect reduced motion
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Theme colors
-  const ACCENT     = [159, 224, 154];  // sage green
-  const ACCENT_T   = [104, 200, 180];  // teal
-  const NODE_COLOR = [78, 95, 68];     // muted green-grey
+  const ACCENT   = [159, 224, 154];
+  const ACCENT_T = [104, 200, 180];
+  const NODE_COLOR = [78, 95, 68];
 
   let W, H, nodes, edges, raf;
   let draggedNode = null;
@@ -71,10 +22,8 @@
     const rect = canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
-    
-    // Find closest node within reach
     nodes.forEach(n => {
-      const dist = Math.sqrt((n.x - mx)**2 + (n.y - my)**2);
+      const dist = Math.sqrt((n.x - mx) ** 2 + (n.y - my) ** 2);
       if (dist < 30) draggedNode = n;
     });
   });
@@ -84,30 +33,24 @@
     mouseInteraction.x = e.clientX - rect.left;
     mouseInteraction.y = e.clientY - rect.top;
     mouseInteraction.active = true;
-
     if (draggedNode) {
       draggedNode.x = mouseInteraction.x;
       draggedNode.y = mouseInteraction.y;
     }
   });
 
-  window.addEventListener('mouseup', () => {
-    draggedNode = null;
-  });
+  window.addEventListener('mouseup', () => { draggedNode = null; });
 
-  // ---- RESIZE ----
   function resize() {
     W = canvas.width  = window.innerWidth;
     H = canvas.height = window.innerHeight;
     buildGraph();
   }
 
-  // ---- BUILD GRAPH ----
   function buildGraph() {
     const count = Math.min(Math.floor((W * H) / 22000), 72);
     nodes = [];
     edges = [];
-
     for (let i = 0; i < count; i++) {
       nodes.push({
         x: Math.random() * W,
@@ -117,54 +60,40 @@
         vy: (Math.random() - 0.5) * 0.22,
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: 0.008 + Math.random() * 0.012,
-        colorIdx: Math.random() < 0.15 ? 1 : 0, // 15% teal accent
+        colorIdx: Math.random() < 0.15 ? 1 : 0,
       });
     }
-
-    // Connect nearby nodes
     const MAX_DIST = Math.min(W, H) * 0.22;
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
         const dy = nodes[i].y - nodes[j].y;
         const d  = Math.sqrt(dx * dx + dy * dy);
-        if (d < MAX_DIST) {
-          edges.push({ a: i, b: j, maxDist: MAX_DIST, base: d });
-        }
+        if (d < MAX_DIST) edges.push({ a: i, b: j, maxDist: MAX_DIST });
       }
     }
   }
 
-  // ---- DRAW ----
-  function draw(ts) {
+  function draw() {
     ctx.clearRect(0, 0, W, H);
 
-    // Subtle radial gradient vignette — dark center is fine,
-    // but we add a faint glow in the top-left hero area
     const grd = ctx.createRadialGradient(W * 0.18, H * 0.28, 0, W * 0.18, H * 0.28, W * 0.55);
     grd.addColorStop(0, 'rgba(50,90,50,0.06)');
     grd.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, W, H);
 
-    // Update node positions
     nodes.forEach(n => {
       if (n !== draggedNode) {
         n.x += n.vx;
         n.y += n.vy;
-
-        // Mouse attraction/repulsion for all nodes
         if (mouseInteraction.active) {
-            const dx = mouseInteraction.x - n.x;
-            const dy = mouseInteraction.y - n.y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < 150) {
-                n.x += dx * 0.01;
-                n.y += dy * 0.01;
-            }
+          const dx = mouseInteraction.x - n.x;
+          const dy = mouseInteraction.y - n.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) { n.x += dx * 0.01; n.y += dy * 0.01; }
         }
       }
-
       if (n.x < -20) n.x = W + 20;
       if (n.x > W + 20) n.x = -20;
       if (n.y < -20) n.y = H + 20;
@@ -173,21 +102,14 @@
     });
 
     const MAX_DIST = Math.min(W, H) * 0.22;
-
-    // Draw edges
     edges.forEach(e => {
-      const a = nodes[e.a];
-      const b = nodes[e.b];
-      const dx = a.x - b.x;
-      const dy = a.y - b.y;
+      const a = nodes[e.a], b = nodes[e.b];
+      const dx = a.x - b.x, dy = a.y - b.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist > MAX_DIST) return;
-
       const alpha = (1 - dist / MAX_DIST) * 0.18;
-      // Pulse: a travelling signal along some edges
       const phaseDiff = Math.abs(Math.sin(a.pulse - b.pulse));
       const boost = phaseDiff > 0.85 ? 0.25 : 0;
-
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
@@ -197,20 +119,16 @@
       ctx.stroke();
     });
 
-    // Draw nodes
     nodes.forEach(n => {
       const glow = 0.5 + 0.5 * Math.sin(n.pulse);
       const [r, g, b] = n.colorIdx === 1 ? ACCENT_T : NODE_COLOR;
       const alpha = 0.3 + glow * 0.4;
-
-      // Outer glow for accent nodes
       if (n.colorIdx === 1) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${r},${g},${b},0.04)`;
         ctx.fill();
       }
-
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
@@ -220,25 +138,16 @@
     raf = requestAnimationFrame(draw);
   }
 
-  // ---- INIT ----
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  if (prefersReduced) {
-    // Static single frame, no animation loop
-    draw(0);
-    return;
-  }
+  if (prefersReduced) { draw(); return; }
 
   raf = requestAnimationFrame(draw);
 
-  // Pause when tab hidden for performance
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      cancelAnimationFrame(raf);
-    } else {
-      raf = requestAnimationFrame(draw);
-    }
+    if (document.hidden) cancelAnimationFrame(raf);
+    else raf = requestAnimationFrame(draw);
   });
 })();
 
@@ -286,17 +195,20 @@ if (menuToggle) {
 /* ═══════════════════════════════════════════════════════════════
    SCROLL REVEAL
    ═══════════════════════════════════════════════════════════════ */
-const revealEls = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => revealObs.observe(el));
+
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 
 /* ═══════════════════════════════════════════════════════════════
-   ACTIVE NAV
+   ACTIVE NAV + SCROLL HEADER
    ═══════════════════════════════════════════════════════════════ */
 const sections = document.querySelectorAll('section[id]');
 const navLinks  = document.querySelectorAll('.site-nav a');
@@ -331,13 +243,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 
 /* ═══════════════════════════════════════════════════════════════
-   TERMINAL TYPEWRITER (subtle — types new lines periodically)
+   TERMINAL TYPEWRITER
    ═══════════════════════════════════════════════════════════════ */
 (function initTerminal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const extraLines = [
-    ['$ git push origin feature/csp-solver',       '# Branch updated · 3 files changed ✓'],
+    ['$ python lipis_athi.py --lang te,hi,ta', '# Transliterated 284 signs · accuracy 96.2% ✓'],
+    ['$ git push origin feature/csp-solver',   '# Branch updated · 3 files changed ✓'],
+    ['$ jupyter nbconvert --execute eda.ipynb','# Notebook executed · 12 cells, 0 errors ✓'],
   ];
 
   const body = document.getElementById('terminal-body');
@@ -349,7 +263,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const pair = extraLines[idx % extraLines.length];
     idx++;
 
-    // Keep max 8 lines — remove oldest pair
     const lines = body.querySelectorAll('.terminal-line:not(:last-child)');
     if (lines.length >= 8) {
       lines[0].remove();
@@ -369,131 +282,101 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       p.style.opacity = '0';
       p.style.transition = 'opacity 0.4s';
       body.insertBefore(p, cursor);
-      requestAnimationFrame(() => { requestAnimationFrame(() => { p.style.opacity = '1'; }); });
+      requestAnimationFrame(() => requestAnimationFrame(() => { p.style.opacity = '1'; }));
     });
   }
 
   setInterval(addLines, 4200);
 })();
 
-// tsParticles Neural Network Setup
-(async () => {
-  await loadAll(tsParticles);
 
-  await tsParticles.load({
-    id: "tsparticles",
-    options: {
-      fpsLimit: 60,
-      interactivity: {
-        events: {
-          onClick: { enable: true, mode: "push" },
-          onHover: { enable: true, mode: "grab" },
-        },
-        modes: {
-          push: { quantity: 4 },
-          grab: { distance: 200, links: { opacity: 0.5 } },
-        },
-      },
-      particles: {
-        color: { value: "#ffffff" },
-        links: {
-          color: "#ffffff",
-          distance: 150,
-          enable: true,
-          opacity: 0.3,
-          width: 1,
-        },
-        move: {
-          direction: "none",
-          enable: true,
-          outModes: { default: "out" },
-          random: false,
-          speed: 1.5,
-          straight: false,
-        },
-        number: {
-          density: { enable: true, area: 800 },
-          value: 80,
-        },
-        opacity: { value: 0.4 },
-        shape: { type: "circle" },
-        size: { value: { min: 1, max: 3 } },
-      },
-      detectRetina: true,
-      background: { color: "transparent" },
-    },
+/* ═══════════════════════════════════════════════════════════════
+   TYPEWRITER ROLE EFFECT
+   ═══════════════════════════════════════════════════════════════ */
+(function initTypewriter() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const el = document.getElementById('typed-role');
+    if (el) el.textContent = 'AI & ML Engineer';
+    return;
+  }
+
+  const roles = [
+    'AI & ML Engineer',
+    'Deep Learning Enthusiast',
+    'NLP & Computer Vision Dev',
+    'SIH 2024 National Finalist',
+    'B.Tech CSE @ VVIT',
+  ];
+
+  const el = document.getElementById('typed-role');
+  if (!el) return;
+
+  let roleIdx = 0;
+  let charIdx = 0;
+  let deleting = false;
+  let pause = 0;
+
+  function tick() {
+    const current = roles[roleIdx];
+
+    if (pause > 0) { pause--; setTimeout(tick, 80); return; }
+
+    if (!deleting) {
+      el.textContent = current.slice(0, ++charIdx);
+      if (charIdx === current.length) { deleting = true; pause = 22; }
+      setTimeout(tick, 65);
+    } else {
+      el.textContent = current.slice(0, --charIdx);
+      if (charIdx === 0) {
+        deleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+        pause = 4;
+      }
+      setTimeout(tick, 38);
+    }
+  }
+
+  setTimeout(tick, 900);
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME TOGGLE  (data-theme attribute on <html>)
+   ═══════════════════════════════════════════════════════════════ */
+(function initTheme() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = stored || (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', initial);
+
+  themeToggle?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
   });
 })();
 
-// Theme Toggle Logic Refined
-const themeBtn = document.getElementById('theme-toggle');
-const body = document.body;
 
-const updateTheme = (isLight) => {
-  body.classList.toggle('light-mode', isLight);
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
-};
-
-// Initial state
-const savedTheme = localStorage.getItem('theme');
-const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-
-if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
-  updateTheme(true);
+/* ═══════════════════════════════════════════════════════════════
+   CUSTOM CURSOR FOLLOWER
+   ═══════════════════════════════════════════════════════════════ */
+const follower = document.querySelector('.cursor-follower');
+if (follower) {
+  document.addEventListener('mousemove', (e) => {
+    follower.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+  });
 }
 
-themeBtn.addEventListener('click', () => {
-  updateTheme(!body.classList.contains('light-mode'));
-});
 
-// Custom Cursor Follower
-const follower = document.querySelector('.cursor-follower');
+/* ═══════════════════════════════════════════════════════════════
+   PARALLAX MOUSE (brain watermark only – subtle)
+   ═══════════════════════════════════════════════════════════════ */
 document.addEventListener('mousemove', (e) => {
-  if (follower) {
-    follower.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
-  }
-});
-
-// Intersection Observer for Reveal
-const observerOptions = { threshold: 0.1 };
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// Parallax Mouse Effect
-document.addEventListener('mousemove', (e) => {
-  const moveX = (e.clientX - window.innerWidth / 2) * 0.015;
-  const moveY = (e.clientY - window.innerHeight / 2) * 0.015;
-  
-  // Target background elements with specific center-alignment handling
+  const moveX = (e.clientX - window.innerWidth  / 2) * 0.008;
+  const moveY = (e.clientY - window.innerHeight / 2) * 0.008;
   const brain = document.querySelector('.brain-watermark-wrap');
-  const robotL = document.querySelector('.robot-left');
-  const robotR = document.querySelector('.robot-right');
-  const hero = document.querySelector('.hero-inner');
-
-  if(brain) brain.style.transform = `translate(calc(-50% + ${moveX * 0.5}px), calc(-50% + ${moveY * 0.5}px))`;
-  if(robotL) robotL.style.transform = `translate(${moveX * 0.8}px, calc(-50% + ${moveY * 0.8}px))`;
-  if(robotR) robotR.style.transform = `translate(${moveX * 0.8}px, calc(-50% + ${moveY * 0.8}px))`;
-  if(hero) hero.style.transform = `translate(${moveX * 0.3}px, ${moveY * 0.3}px)`;
-});
-
-// Theme Toggle Functionality
-document.addEventListener('DOMContentLoaded', () => {
-  const themeToggle = document.getElementById('theme-toggle');
-  const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  
-  document.documentElement.setAttribute('data-theme', storedTheme);
-
-  themeToggle?.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
+  if (brain) brain.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
 });
