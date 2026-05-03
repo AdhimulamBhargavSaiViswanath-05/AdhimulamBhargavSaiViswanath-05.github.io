@@ -1,6 +1,5 @@
-// Matrix-style Binary Code Rain Effect
 (function() {
-  const canvas = document.getElementById('bg-binary-rain');
+  const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let width = window.innerWidth;
@@ -36,112 +35,6 @@
       }
     }
     ctx.restore();
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize', resize);
-  resize();
-  draw();
-})();
-// Animated Star Field
-(function() {
-  const canvas = document.getElementById('bg-stars');
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-        // Animate nodes (faster)
-        for (const node of nodes) {
-          node.x += node.vx * 2.2;
-          node.y += node.vy * 2.2;
-          if (node.x < 0 || node.x > width) node.vx *= -1;
-          if (node.y < 0 || node.y > height) node.vy *= -1;
-        }
-        // Draw links
-        ctx.save();
-        ctx.globalAlpha = 0.18;
-        ctx.strokeStyle = '#bff';
-        for (const [i, j] of links) {
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
-        }
-        ctx.restore();
-        // Draw nodes
-        for (const node of nodes) {
-          ctx.save();
-          ctx.globalAlpha = 0.32;
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, 2.7, 0, Math.PI * 2);
-          ctx.fillStyle = '#bff';
-          ctx.shadowColor = '#fff';
-          ctx.shadowBlur = 8;
-          ctx.fill();
-          ctx.restore();
-        }
-        requestAnimationFrame(animate);
-      }
-  const ctx = canvas.getContext('2d');
-  let nodes = [];
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    nodes = [];
-    // Left web
-    for (let i = 0; i < 18; i++) {
-      nodes.push({
-        x: Math.random() * 0.25 * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: Math.random() * 0.3 - 0.15,
-        vy: Math.random() * 0.3 - 0.15
-      });
-    }
-    // Right web
-    for (let i = 0; i < 18; i++) {
-      nodes.push({
-        x: canvas.width - Math.random() * 0.25 * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: Math.random() * 0.3 - 0.15,
-        vy: Math.random() * 0.3 - 0.15
-      });
-    }
-  }
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // Animate nodes
-    for (const n of nodes) {
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-    }
-    // Draw connections
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i], b = nodes[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 160) {
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = 'rgba(200,255,255,0.13)';
-          ctx.lineWidth = 1.1;
-          ctx.shadowColor = '#fff';
-          ctx.shadowBlur = 6;
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-        }
-      }
-    }
-    // Draw nodes
-    for (const n of nodes) {
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 2.2, 0, 2 * Math.PI);
-      ctx.fillStyle = '#fff';
-      ctx.shadowColor = '#fff';
-      ctx.shadowBlur = 8;
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    }
     requestAnimationFrame(draw);
   }
   window.addEventListener('resize', resize);
