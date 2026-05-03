@@ -249,7 +249,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const extraLines = [
-    ['$ python lipis_athi.py --lang te,hi,ta', '# Transliterated 284 signs · accuracy 96.2% ✓'],
+    ['$ python lipisathi.py --lang te,hi,ta',   '# Transliterated 284 signs · accuracy 96.2% ✓'],
     ['$ git push origin feature/csp-solver',   '# Branch updated · 3 files changed ✓'],
     ['$ jupyter nbconvert --execute eda.ipynb','# Notebook executed · 12 cells, 0 errors ✓'],
   ];
