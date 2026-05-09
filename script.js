@@ -188,9 +188,9 @@ for(let i=0; i<cols; i++) {
     dataStream.appendChild(col);
 }
 
-// Neural Dots Background
+// Neural Dots Background with Connections
 const canvasContainer = document.getElementById("neural-canvas");
-const dotsCount = 100; // Increased count
+const dotsCount = window.innerWidth < 768 ? 40 : 80; // Optimize for mobile
 const dots = [];
 const googleColors = ['#4285f4', '#34a853', '#fbbc05', '#ea4335'];
 
@@ -208,29 +208,160 @@ for (let i = 0; i < dotsCount; i++) {
         left: ${Math.random() * 100}%;
         top: ${Math.random() * 100}%;
         box-shadow: 0 0 8px ${color};
+        z-index: 1;
     `;
     
-    const speedX = (Math.random() - 0.5) * 0.8;
-    const speedY = (Math.random() - 0.5) * 0.8;
+    const speedX = (Math.random() - 0.5) * 0.5;
+    const speedY = (Math.random() - 0.5) * 0.5;
     
-    dots.push({ element: dot, x: Math.random() * 100, y: Math.random() * 100, vx: speedX, vy: speedY });
+    dots.push({ 
+        element: dot, 
+        x: Math.random() * window.innerWidth, 
+        y: Math.random() * window.innerHeight, 
+        vx: speedX, 
+        vy: speedY,
+        color: color
+    });
     canvasContainer.appendChild(dot);
 }
 
+// Create Lines Container
+const linesContainer = document.createElement("div");
+linesContainer.className = "lines-container";
+canvasContainer.appendChild(linesContainer);
+
 function animateDots() {
-    dots.forEach(dot => {
+    linesContainer.innerHTML = ""; // Clear lines for this frame
+    
+    dots.forEach((dot, index) => {
         dot.x += dot.vx;
         dot.y += dot.vy;
         
-        if (dot.x < 0 || dot.x > 100) dot.vx *= -1;
-        if (dot.y < 0 || dot.y > 100) dot.vy *= -1;
+        if (dot.x < 0 || dot.x > window.innerWidth) dot.vx *= -1;
+        if (dot.y < 0 || dot.y > window.innerHeight) dot.vy *= -1;
         
-        dot.element.style.left = dot.x + "%";
-        dot.element.style.top = dot.y + "%";
+        dot.element.style.transform = `translate(${dot.x}px, ${dot.y}px)`;
+
+        // Draw connections
+        for (let j = index + 1; j < dots.length; j++) {
+            const nextDot = dots[j];
+            const dx = dot.x - nextDot.x;
+            const dy = dot.y - nextDot.y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+
+            if (dist < 180) { // Increased distance range
+                const line = document.createElement("div");
+                line.className = "neural-line";
+                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                line.style.width = dist + "px";
+                line.style.left = nextDot.x + "px";
+                line.style.top = nextDot.y + "px";
+                line.style.transform = `rotate(${angle}deg)`;
+                line.style.setProperty('--line-color', dot.color);
+                line.style.opacity = (1 - dist/180) * 0.6; // Increased multiplier
+                linesContainer.appendChild(line);
+            }
+        }
     });
     requestAnimationFrame(animateDots);
 }
-animateDots();
+// Use simple dots for mobile, connections for desktop to save performance
+if (window.innerWidth > 768) {
+    animateDots();
+} else {
+    // Simple animation for mobile
+    function animateMobile() {
+        dots.forEach(dot => {
+            dot.x += dot.vx;
+            dot.y += dot.vy;
+            if (dot.x < 0 || dot.x > window.innerWidth) dot.vx *= -1;
+            if (dot.y < 0 || dot.y > window.innerHeight) dot.vy *= -1;
+            dot.element.style.transform = `translate(${dot.x}px, ${dot.y}px)`;
+        });
+        requestAnimationFrame(animateMobile);
+    }
+    animateMobile();
+}
+
+// Optimization: Remove scroll reveal delays for mobile load speed
+if (window.innerWidth < 768) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+}
+
+// Project Graph Constellation
+const graphContainer = document.getElementById('project-graph-container');
+const graphCanvas = document.getElementById('graph-canvas');
+const ctx = graphCanvas.getContext('2d');
+
+const projects = [
+    { name: "LipiSathi", tags: ["OCR", "DL"] },
+    { name: "Timetable AI", tags: ["CSP", "Optimization"] },
+    { name: "Stemming Engine", tags: ["NLP", "Regex"] },
+    { name: "Bus Prediction", tags: ["ML", "Regression"] },
+    { name: "Amazon Scraping", tags: ["EDA", "Scraping"] }
+];
+
+let nodes = [];
+const nodeElements = [];
+
+function initGraph() {
+    graphCanvas.width = graphContainer.offsetWidth;
+    graphCanvas.height = graphContainer.offsetHeight;
+    
+    projects.forEach((p, i) => {
+        const node = document.createElement('div');
+        node.className = 'graph-node';
+        node.innerText = p.name;
+        node.style.left = (Math.random() * (graphCanvas.width - 150) + 50) + 'px';
+        node.style.top = (Math.random() * (graphCanvas.height - 50) + 25) + 'px';
+        
+        graphContainer.appendChild(node);
+        nodeElements.push(node);
+        
+        nodes.push({
+            el: node,
+            x: parseFloat(node.style.left),
+            y: parseFloat(node.style.top),
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: (Math.random() - 0.5) * 1.5,
+            width: node.offsetWidth,
+            height: node.offsetHeight
+        });
+    });
+}
+
+function updateGraph() {
+    ctx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+    ctx.beginPath();
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent') + '44';
+    ctx.lineWidth = 1;
+
+    nodes.forEach((node, i) => {
+        // Update physics
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x <= 0 || node.x + node.width >= graphCanvas.width) node.vx *= -1;
+        if (node.y <= 0 || node.y + node.height >= graphCanvas.height) node.vy *= -1;
+
+        node.el.style.transform = `translate(${node.vx}px, ${node.vy}px)`;
+        node.el.style.left = node.x + 'px';
+        node.el.style.top = node.y + 'px';
+
+        // Draw connections
+        for (let j = i + 1; j < nodes.length; j++) {
+            ctx.moveTo(node.x + node.width/2, node.y + node.height/2);
+            ctx.lineTo(nodes[j].x + nodes[j].width/2, nodes[j].y + nodes[j].height/2);
+        }
+    });
+    ctx.stroke();
+    requestAnimationFrame(updateGraph);
+}
+
+if (graphContainer) {
+    initGraph();
+    updateGraph();
+}
 
 // Resume Preview Modal Logic
 const resumeModal = document.getElementById("resume-modal");
