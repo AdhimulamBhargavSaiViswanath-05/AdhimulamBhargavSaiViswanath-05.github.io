@@ -13,66 +13,47 @@ window.addEventListener("load",()=>{
 
 // Typing Effect
 
-const typingText =
-document.querySelector(".typing-text");
+const typingText = document.querySelector(".typing-text");
 
-const words = [
+if (typingText) {
+    const words = [
+        "Aspiring AI Engineer",
+        "Machine Learning Developer",
+        "NLP Enthusiast",
+        "Cloud Learner",
+        "Frontend Designer"
+    ];
 
-    "Aspiring AI Engineer",
-    "Machine Learning Developer",
-    "NLP Enthusiast",
-    "Cloud Learner",
-    "Frontend Designer"
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-];
+    function typeEffect(){
+        const currentWord = words[wordIndex];
 
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+        if(!isDeleting){
+            typingText.textContent = currentWord.substring(0,charIndex++);
+        }else{
+            typingText.textContent = currentWord.substring(0,charIndex--);
+        }
 
-function typeEffect(){
+        let speed = isDeleting ? 50 : 100;
 
-    const currentWord =
-    words[wordIndex];
+        if(charIndex === currentWord.length + 1){
+            isDeleting = true;
+            speed = 1200;
+        }
 
-    if(!isDeleting){
+        if(charIndex === 0){
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+        }
 
-        typingText.textContent =
-        currentWord.substring(0,charIndex++);
-
-    }else{
-
-        typingText.textContent =
-        currentWord.substring(0,charIndex--);
-
+        setTimeout(typeEffect,speed);
     }
 
-    let speed =
-    isDeleting ? 50 : 100;
-
-    if(charIndex ===
-       currentWord.length + 1){
-
-        isDeleting = true;
-        speed = 1200;
-
-    }
-
-    if(charIndex === 0){
-
-        isDeleting = false;
-
-        wordIndex =
-        (wordIndex + 1)
-        % words.length;
-
-    }
-
-    setTimeout(typeEffect,speed);
-
+    typeEffect();
 }
-
-typeEffect();
 
 // Theme Toggle
 
