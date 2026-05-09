@@ -99,12 +99,7 @@
             <h2 class="typing-text"></h2>
 
             <p class="hero-description">
-
-                B.Tech CSE - AI & ML Student at VVIT |
-                Aspiring AI Engineer |
-                Passionate about building intelligent
-                and scalable AI-driven systems.
-
+                Aspiring AI Engineer | B.Tech CSE - AI & ML at VVIT
             </p>
 
             <div class="hero-buttons">
@@ -170,7 +165,10 @@
                 change it. If you can't change it,
                 change the way you think about it.”
             </p>
-            <cite>— Adhimulam Bhargav Sai Viswanath</cite>
+            <div class="quote-author">
+                <i class="fa-solid fa-user-tie quote-icon"></i>
+                <cite>— <span class="author-name">Adhimulam Bhargav Sai Viswanath</span><br><small>Self-Reflection</small></cite>
+            </div>
         </div>
 
         <div class="quote-card">
@@ -180,7 +178,12 @@
                 you have for it — that determines
                 whether you will do it or not.”
             </p>
-            <cite>— <a href="https://www.vvitguntur.com/tkr-profile" target="_blank">Dr. T. Kameswararao</a>, Professor VVIT</cite>
+            <div class="quote-author">
+                <a href="https://www.vvitguntur.com/tkr-profile" target="_blank" class="quote-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </a>
+                <cite>— <a href="https://www.vvitguntur.com/tkr-profile" target="_blank" class="author-link">Dr. T. Kameswararao</a><br><small>Professor • B.Tech Counselor</small></cite>
+            </div>
         </div>
 
         <div class="quote-card">
@@ -190,14 +193,30 @@
                 Once 1 begins,
                 growth becomes unstoppable.”
             </p>
-            <cite>— <a href="https://www.linkedin.com/in/kakumanusairam/" target="_blank">K. Sai Ram</a></cite>
+            <div class="quote-author">
+                <a href="https://www.linkedin.com/in/kakumanusairam/" target="_blank" class="quote-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <cite>— <a href="https://www.linkedin.com/in/kakumanusairam/" target="_blank" class="author-link">K. Sai Ram</a><br><small>Cousin • Professional Mentor</small></cite>
+            </div>
         </div>
 
         <div class="quote-card large-quote">
             <p>
                 “Do not wait for recognition to begin creating. Build with purpose, learn with curiosity, and contribute with consistency. A name alone has no value until dedication, knowledge, and meaningful work give life to it. In the end, it is not popularity that creates impact — it is the impact of your work that creates recognition.”
             </p>
-            <cite>— <a href="https://www.linkedin.com/in/mpsaradhi/" target="_blank">Dr. M. Pardha Saradhi</a></cite>
+            <div class="quote-author">
+                <div class="multi-icons">
+                    <a href="https://vvitguntur.com/skk-profile/90-dept-pages/faculty-profiles/ece-faculty-profiles/502-mr-m-pardha-saradhi" target="_blank" class="quote-icon">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mpsaradhi/" target="_blank" class="quote-icon">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <cite>— <a href="https://www.linkedin.com/in/mpsaradhi/" target="_blank" class="author-link">Dr. M. Pardha Saradhi</a><br><small>Professor • Career Guide</small></cite>
+            </div>
+        </div>
         </div>
 
     </section>
@@ -273,6 +292,7 @@
         <div class="skills-grid">
 
             <div class="skill-card">
+                <div class="scan-line"></div>
                 <i class="fa-solid fa-brain"></i>
 
                 <h3>AI & Machine Learning</h3>
@@ -286,7 +306,7 @@
             </div>
 
             <div class="skill-card">
-
+                <div class="scan-line"></div>
                 <i class="fa-solid fa-code"></i>
 
                 <h3>Programming & Tools</h3>
@@ -300,7 +320,7 @@
             </div>
 
             <div class="skill-card">
-
+                <div class="scan-line"></div>
                 <i class="fa-solid fa-server"></i>
 
                 <h3>Core CS</h3>
@@ -314,7 +334,7 @@
             </div>
 
             <div class="skill-card">
-
+                <div class="scan-line"></div>
                 <i class="fa-solid fa-display"></i>
 
                 <h3>Development</h3>
@@ -328,7 +348,7 @@
             </div>
 
             <div class="skill-card">
-
+                <div class="scan-line"></div>
                 <i class="fa-solid fa-users"></i>
 
                 <h3>Soft Skills</h3>
@@ -358,7 +378,7 @@
         <div class="projects-grid">
 
             <div class="project-card">
-
+                <div class="scan-line"></div>
                 <h3>LipiSathi: Internet-Free Transliteration</h3>
 
                 <p>
@@ -377,7 +397,7 @@
             </div>
 
             <div class="project-card">
-
+                <div class="scan-line"></div>
                 <h3>
                     Automated AI Timetable Generation
                 </h3>
@@ -399,7 +419,7 @@
             </div>
 
             <div class="project-card">
-
+                <div class="scan-line"></div>
                 <h3>
                     Custom NLP Stemming Engine
                 </h3>
@@ -420,7 +440,7 @@
             </div>
 
             <div class="project-card">
-
+                <div class="scan-line"></div>
                 <h3>
                     Bus Service Prediction System
                 </h3>
@@ -441,7 +461,7 @@
             </div>
 
             <div class="project-card">
-
+                <div class="scan-line"></div>
                 <h3>
                     Amazon Product Trend Analysis
                 </h3>
@@ -463,6 +483,27 @@
 
         </div>
 
+        <div id="project-graph-container">
+            <canvas id="graph-canvas"></canvas>
+            <!-- Nodes will be injected via JS -->
+        </div>
+
+    </section>
+
+    <!-- GitHub Intelligence -->
+    <section id="github-intelligence" class="section glass reveal">
+        <h2 class="section-title">GitHub Intelligence Dashboard</h2>
+        <div class="github-stats-container">
+            <div class="github-card">
+                <img src="https://github-readme-stats.vercel.app/api?username=AdhimulamBhargavSaiViswanath-05&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" alt="GitHub Stats">
+            </div>
+            <div class="github-card">
+                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AdhimulamBhargavSaiViswanath-05&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117" alt="Top Languages">
+            </div>
+            <div class="github-card">
+                <img src="https://github-showcase.vercel.app/api/streak-stats/?username=AdhimulamBhargavSaiViswanath-05&theme=tokyonight&hide_border=true&background=0d1117" alt="GitHub Streak">
+            </div>
+        </div>
     </section>
 
     <!-- Experience -->
@@ -644,28 +685,31 @@
     <!-- Contact -->
 
     <section id="contact"
-             class="section reveal">
+             class="section glass reveal">
 
         <h2 class="section-title">
-            Contact
+            Let's Connect
         </h2>
 
         <div class="contact-box">
 
             <p>
+                <i class="fa-solid fa-envelope" style="color: var(--accent); margin-right: 10px;"></i>
                 Email : <a href="mailto:bhargavsaiadhimulam12@gmail.com">bhargavsaiadhimulam12@gmail.com</a>
             </p>
 
             <p>
+                <i class="fa-solid fa-phone" style="color: var(--accent); margin-right: 10px;"></i>
                 Phone : <a href="tel:+917013833594">+91 70138 33594</a>
             </p>
 
             <p>
+                <i class="fa-solid fa-location-dot" style="color: var(--accent); margin-right: 10px;"></i>
                 Location :
-                <a href="https://www.google.com/maps/place/Tenali/data=!4m2!3m1!19sChIJj_-nCQkGSjoRFOUFDmN53sw">Tenali, Andhra Pradesh</a>
+                <a href="https://www.google.com/maps/place/Tenali/data=!4m2!3m1!19sChIJj_-nCQkGSjoRFOUFDmN53sw" target="_blank">Tenali, Andhra Pradesh</a>
             </p>
 
-            <div class="social-icons">
+            <div class="social-icons" style="justify-content: center; margin-top: 30px;">
 
                 <a href="https://www.linkedin.com/in/AdhimulamBhargavSaiViswanath" target="_blank">
                     <i class="fab fa-linkedin"></i>
