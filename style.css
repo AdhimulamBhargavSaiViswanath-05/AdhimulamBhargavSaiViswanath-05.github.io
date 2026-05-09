@@ -694,12 +694,23 @@ body{
     padding: 25px;
     border-radius: 20px;
     border: 1px solid var(--border);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+}
+
+.github-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
 }
 
 .github-card img {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    display: block;
 }
 
 /* Timeline */
