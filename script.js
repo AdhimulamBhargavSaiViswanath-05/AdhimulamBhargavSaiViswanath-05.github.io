@@ -71,6 +71,29 @@ toggleBtn.addEventListener("click", () => {
     icon.className = isLight ? "fa-solid fa-sun" : "fa-solid fa-moon";
 });
 
+// Mobile Nav Toggle
+const navToggle = document.getElementById("nav-toggle");
+const navLinks = document.getElementById("nav-links");
+
+if (navToggle && navLinks) {
+    navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        const icon = navToggle.querySelector("i");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-xmark");
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            const icon = navToggle.querySelector("i");
+            icon.classList.add("fa-bars");
+            icon.classList.remove("fa-xmark");
+        });
+    });
+}
+
 // Load Theme
 
 if(localStorage.getItem("theme")
@@ -106,8 +129,7 @@ window.addEventListener("scroll",()=>{
 
 });
 
-// Scroll Progress
-
+// Scroll Progress & Active Link Update
 window.addEventListener("scroll",()=>{
 
     const scrollTop =
@@ -125,48 +147,77 @@ window.addEventListener("scroll",()=>{
     "progress-bar").style.width =
     progress + "%";
 
-});
+    // Active Link Highlighting
+    const sections = document.querySelectorAll("section[id]");
+    const navLinksList = document.querySelectorAll(".nav-links a");
 
-// Cursor Glow & Mouse Interactions
-const cards = document.querySelectorAll(".skill-card, .project-card, .stat-card, .quote-card");
+    let current = "";
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute("id");
+        }
+    });
 
-document.addEventListener("mousemove", (e) => {
-    // 3D Tilt Effect
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-
-            card.style.transform = `perspective(1000px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        } else {
-            card.style.transform = `perspective(1000px) scale(1) rotateX(0) rotateY(0)`;
+    navLinksList.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+            link.classList.add("active");
         }
     });
 });
 
+// Horizontal Grid Scroll
+function scrollGrid(gridId, amount) {
+    const grid = document.getElementById(gridId);
+    grid.scrollBy({ left: amount, behavior: 'smooth' });
+}
+
+// Cursor Glow & Mouse Interactions
+const cards = document.querySelectorAll(".skill-card, .project-card, .stat-card, .quote-card");
+
+if (window.innerWidth > 1024) { // Only run 3D tilt on desktop
+    document.addEventListener("mousemove", (e) => {
+        // 3D Tilt Effect
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20; // Reduced intensity
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            } else {
+                card.style.transform = `perspective(1000px) scale(1) rotateX(0) rotateY(0)`;
+            }
+        });
+    });
+}
+
 // ML Data Stream Effect
 const dataStream = document.getElementById("data-stream");
-const cols = Math.floor(window.innerWidth / 50);
+if (dataStream && window.innerWidth > 1024) { // Only run on desktop
+    const cols = Math.floor(window.innerWidth / 50);
 
-for(let i=0; i<cols; i++) {
-    const col = document.createElement("div");
-    col.className = "data-column";
-    col.style.left = (i * 50) + "px";
-    col.style.animationDelay = (Math.random() * 10) + "s";
-    col.style.animationDuration = (5 + Math.random() * 10) + "s";
-    
-    let binary = "";
-    for(let j=0; j<50; j++) {
-        binary += Math.round(Math.random()) + "<br>";
+    for(let i=0; i<cols; i++) {
+        const col = document.createElement("div");
+        col.className = "data-column";
+        col.style.left = (i * 50) + "px";
+        col.style.animationDelay = (Math.random() * 10) + "s";
+        col.style.animationDuration = (5 + Math.random() * 10) + "s";
+        
+        let binary = "";
+        for(let j=0; j<50; j++) {
+            binary += Math.round(Math.random()) + "<br>";
+        }
+        col.innerHTML = binary;
+        dataStream.appendChild(col);
     }
-    col.innerHTML = binary;
-    dataStream.appendChild(col);
 }
 
 // Neural Dots Background with Connections
