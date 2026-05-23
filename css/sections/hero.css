@@ -1,0 +1,8 @@
+.hero { display: grid; gap: var(--space-6); grid-template-columns: 1.2fr 0.8fr; align-items: center; min-height: calc(100svh - 72px); }
+.hero-summary { color: var(--text-secondary); max-width: 64ch; margin-bottom: var(--space-3); }
+.hero-ctas { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); flex-wrap: wrap; }
+.hero-profile img { border-radius: calc(var(--card-radius) - 6px); aspect-ratio: 1/1; object-fit: cover; }
+.metrics { display: grid; gap: var(--space-2); grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.metric-card h2 { margin-bottom: .2rem; color: var(--accent-cyan); }
+.typewriter { min-height: 1.7rem; color: var(--accent-mint); margin-bottom: var(--space-2); }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
