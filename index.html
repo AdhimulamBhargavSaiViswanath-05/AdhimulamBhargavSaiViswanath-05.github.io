@@ -1,822 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adhimulam Bhargav Sai Viswanath | AI Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Adhimulam Bhargav Sai Viswanath, AI/ML engineer focused on NLP, optimization systems, and cloud-enabled intelligent products.">
+  <meta name="theme-color" content="#050A0F">
+  <meta property="og:title" content="Adhimulam Bhargav Sai Viswanath | AI Engineer">
+  <meta property="og:description" content="AI/ML portfolio featuring projects in NLP, OCR transliteration, timetable optimization, and cloud development.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/profile.jpg">
 
-    <title>
-        ADHIMULAM BHARGAV SAI VISWANATH
-    </title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-d0M8lX2r6sUJ5sZ+Q6h8M6b8fQfQj0hB/4Q8P1X9DAtxN0k7Qjz4W8nB+2VfM4JQ5U1QJ9V6r5M1V0QxGxY2Vg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <link rel="stylesheet" href="style.css">
+  <style>
+    #loader { position: fixed; inset: 0; z-index: 9999; background: #050A0F; display: grid; place-items: center; }
+    .loader-core { width: 72px; height: 72px; border-radius: 50%; border: 3px solid rgba(0,212,255,.25); border-top-color: #00D4FF; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg);} }
+  </style>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <!-- Icons -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sections/loader.css">
+  <link rel="stylesheet" href="css/sections/nav.css">
+  <link rel="stylesheet" href="css/sections/hero.css">
+  <link rel="stylesheet" href="css/sections/about.css">
+  <link rel="stylesheet" href="css/sections/skills.css">
+  <link rel="stylesheet" href="css/sections/projects.css">
+  <link rel="stylesheet" href="css/sections/experience.css">
+  <link rel="stylesheet" href="css/sections/achievements.css">
+  <link rel="stylesheet" href="css/sections/education.css">
+  <link rel="stylesheet" href="css/sections/certifications.css">
+  <link rel="stylesheet" href="css/sections/coding.css">
+  <link rel="stylesheet" href="css/sections/contact.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
-
 <body>
-
-    <!-- Progress Bar -->
-    <div id="progress-bar"></div>
-
-    <!-- Animated AI Background -->
-    <div class="bg-container">
-        <div class="neural-dots" id="neural-canvas"></div>
-        <div id="neural-overlay"></div>
-        <div class="ml-data-stream" id="data-stream"></div>
-        <div class="brain-pulse"></div>
-        <div class="moving-grid"></div>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-        <div class="floating-blob blob-1"></div>
-        <div class="floating-blob blob-2"></div>
+  <div id="loader" aria-hidden="true">
+    <div class="loader-wrap">
+      <div class="loader-core"></div>
+      <p class="loader-text">Initializing AI portfolio...</p>
     </div>
+  </div>
 
-    <div class="cursor-glow"></div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <canvas id="ai-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
 
-    <!-- Animated Background -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary">
+      <a href="#top" class="brand">ABSV</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#coding">Coding</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle light mode">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
+    </nav>
+    <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+  </header>
 
-    <!-- Floating Tech Icons - Removed per user request -->
-
-    <!-- Navbar -->
-    <header>
-
-        <nav class="navbar">
-
-            <div class="logo">
-                ABSV
-            </div>
-
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <ul class="nav-links" id="nav-links">
-
-                <li><a href="#about">About</a></li>
-                <li><a href="#coding-profiles">Coding</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-
-            </ul>
-
-            <button id="theme-toggle">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-
-        </nav>
-
-    </header>
-
-    <!-- Hero -->
-
-    <section class="hero reveal">
-
-        <div class="hero-left">
-
-            <p class="tagline">
-                AI • ML • NLP • Cloud • Innovation
-            </p>
-
-            <h1>
-                ADHIMULAM<br>
-                BHARGAV SAI<br>
-                VISWANATH
-            </h1>
-
-            <h2 class="typing-text"></h2>
-
-            <p class="hero-description">
-                Aspiring AI Engineer | B.Tech CSE - AI & ML at VVIT
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="assets/resume.pdf" target="_blank"
-                   class="btn primary-btn">
-
-                    View Resume
-
-                </a>
-
-                <a href="#projects"
-                   class="btn secondary-btn">
-
-                    Explore Projects
-
-                </a>
-
-            </div>
-
+  <main id="main-content">
+    <section id="hero" class="hero section container">
+      <div>
+        <p class="eyebrow">AI • ML • NLP • CLOUD</p>
+        <h1>Adhimulam Bhargav Sai Viswanath</h1>
+        <p class="typewriter" aria-live="polite"><span id="typewriter-text"></span><span class="caret">|</span></p>
+        <p class="hero-summary">AI/ML student building intelligent systems for transliteration, scheduling optimization, and predictive analytics.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="assets/resume.pdf" target="_blank" rel="noopener">View Resume</a>
+          <a class="btn btn-secondary" href="#projects">Explore Projects</a>
         </div>
-
-        <div class="hero-right">
-
-            <div class="profile-card">
-
-                <img src="assets/profile.jpg"
-                     alt="Profile">
-
-            </div>
-
+        <div class="metrics" role="list" aria-label="Portfolio metrics">
+          <article role="listitem" class="metric-card">
+            <h2><span class="counter" data-target="95">0</span>%</h2>
+            <p>Transliteration Accuracy</p>
+          </article>
+          <article role="listitem" class="metric-card">
+            <h2><span class="counter" data-target="0.4">0</span>s</h2>
+            <p>Timetable Generation</p>
+          </article>
+          <article role="listitem" class="metric-card">
+            <h2>R² <span class="counter" data-target="0.96">0</span></h2>
+            <p>Bus Demand Forecasting</p>
+          </article>
         </div>
-
+      </div>
+      <div class="hero-profile glass-card">
+        <picture>
+          <source srcset="assets/images/profile.webp" type="image/webp">
+          <img src="assets/profile.jpg" alt="Portrait of Adhimulam Bhargav Sai Viswanath" fetchpriority="high" width="420" height="420">
+        </picture>
+      </div>
     </section>
 
-    <!-- Quotes -->
-
-    <section class="quotes-section reveal">
-        <h2 class="section-title center">Wisdom from Mentors</h2>
-
-        <div class="quote-card">
-            <p>
-                “If you don't like something,
-                change it. If you can't change it,
-                change the way you think about it.”
-            </p>
-            <div class="quote-author">
-                <i class="fa-solid fa-user-tie quote-icon"></i>
-                <cite>— <span class="author-name">Adhimulam Bhargav Sai Viswanath</span><br><small>Self-Reflection</small></cite>
-            </div>
+    <section id="about" class="section section-alt">
+      <div class="container split">
+        <div>
+          <h2>About</h2>
+          <p>AI/ML student with hands-on work across NLP pipelines, timetable optimization, OCR-based multilingual transliteration, and practical machine-learning deployment.</p>
+          <p>Focused on solving meaningful real-world problems through intelligent products and cloud-native engineering discipline.</p>
         </div>
-
-        <div class="quote-card">
-            <p>
-                “How much you need something,
-                and how much interest or desire
-                you have for it — that determines
-                whether you will do it or not.”
-            </p>
-            <div class="quote-author">
-                <a href="https://www.vvitguntur.com/tkr-profile" target="_blank" class="quote-icon">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </a>
-                <cite>— <a href="https://www.vvitguntur.com/tkr-profile" target="_blank" class="author-link">Dr. T. Kameswararao</a><br><small>Professor • B.Tech Counselor</small></cite>
-            </div>
+        <div class="glass-card quote-card">
+          <h3>Guiding Principle</h3>
+          <p>“Do not wait for recognition to begin creating. Build with purpose, learn with curiosity, and contribute with consistency.”</p>
         </div>
-
-        <div class="quote-card">
-            <p>
-                “The journey from 0 to 1
-                takes the most time.
-                Once 1 begins,
-                growth becomes unstoppable.”
-            </p>
-            <div class="quote-author">
-                <a href="https://www.linkedin.com/in/kakumanusairam/" target="_blank" class="quote-icon">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <cite>— <a href="https://www.linkedin.com/in/kakumanusairam/" target="_blank" class="author-link">K. Sai Ram</a><br><small>Cousin • Professional Mentor</small></cite>
-            </div>
-        </div>
-
-        <div class="quote-card large-quote">
-            <p>
-                “Do not wait for recognition to begin creating. Build with purpose, learn with curiosity, and contribute with consistency. A name alone has no value until dedication, knowledge, and meaningful work give life to it. In the end, it is not popularity that creates impact — it is the impact of your work that creates recognition.”
-            </p>
-            <div class="quote-author">
-                <div class="multi-icons">
-                    <a href="https://vvitguntur.com/skk-profile/90-dept-pages/faculty-profiles/ece-faculty-profiles/502-mr-m-pardha-saradhi" target="_blank" class="quote-icon">
-                        <i class="fa-solid fa-link"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mpsaradhi/" target="_blank" class="quote-icon">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                </div>
-                <cite>— <a href="https://www.linkedin.com/in/mpsaradhi/" target="_blank" class="author-link">Dr. M. Pardha Saradhi</a><br><small>Professor • Career Guide</small></cite>
-            </div>
-        </div>
-        </div>
-
+      </div>
     </section>
 
-    <!-- About -->
-    <!-- AI Journey Metrics section removed per user request -->
-
-    <section id="about"
-             class="section glass reveal">
-
-        <h2 class="section-title">
-            About Me
-        </h2>
-
-        <p>
-
-            AI/ML student with hands-on experience
-            in NLP pipelines, timetable optimization,
-            OCR-based transliteration systems,
-            and machine learning applications.
-
-            Passionate about leveraging
-            artificial intelligence and cloud computing
-            to solve impactful real-world problems.
-
-        </p>
-
+    <section id="skills" class="section container">
+      <h2>Skills</h2>
+      <div class="grid cards-3" role="list">
+        <article role="listitem" class="glass-card"><h3>AI &amp; Machine Learning</h3><p>Scikit-learn, PyTorch, CNNs, NLP preprocessing, CSP optimization, EDA.</p></article>
+        <article role="listitem" class="glass-card"><h3>Programming &amp; Tools</h3><p>Python, Java, C, SQL, Git, GitHub.</p></article>
+        <article role="listitem" class="glass-card"><h3>Core CS</h3><p>DSA, DBMS, Operating Systems, Computer Networks.</p></article>
+        <article role="listitem" class="glass-card"><h3>Development</h3><p>HTML, CSS, JavaScript, responsive UI/UX, GitHub Pages deployment.</p></article>
+        <article role="listitem" class="glass-card"><h3>Soft Skills</h3><p>Problem solving, collaboration, leadership, communication.</p></article>
+      </div>
     </section>
 
-    <!-- Stats -->
-    <!-- Removed AI Journey Metrics section -->
-
-    <!-- Skills -->
-
-    <section id="skills"
-             class="section reveal">
-
-        <h2 class="section-title">
-            Skills
-        </h2>
-
-        <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollGrid('skills-grid', -300)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="skills-grid" id="skills-grid">
-
-                <div class="skill-card">
-                <div class="scan-line"></div>
-                <i class="fa-solid fa-brain"></i>
-
-                <h3>AI & Machine Learning</h3>
-
-                <p>
-                    ML (Scikit-learn), DL (PyTorch, CNNs),
-                    NLP (Text Preprocessing, Stemming),
-                    CSP (Timetable Optimization),
-                    EDA (Pandas, NumPy, Matplotlib)
-                </p>
-            </div>
-
-            <div class="skill-card">
-                <div class="scan-line"></div>
-                <i class="fa-solid fa-code"></i>
-
-                <h3>Programming & Tools</h3>
-
-                <p>
-                    Python, Java,
-                    C, SQL,
-                    Git, GitHub
-                </p>
-
-            </div>
-
-            <div class="skill-card">
-                <div class="scan-line"></div>
-                <i class="fa-solid fa-server"></i>
-
-                <h3>Core CS</h3>
-
-                <p>
-                    DSA, DBMS,
-                    Operating Systems,
-                    Computer Networks
-                </p>
-
-            </div>
-
-            <div class="skill-card">
-                <div class="scan-line"></div>
-                <i class="fa-solid fa-display"></i>
-
-                <h3>Development</h3>
-
-                <p>
-                    Frontend (HTML, CSS, JS),
-                    Responsive UI/UX,
-                    GitHub Pages Deployment
-                </p>
-
-            </div>
-
-            <div class="skill-card">
-                <div class="scan-line"></div>
-                <i class="fa-solid fa-users"></i>
-
-                <h3>Soft Skills</h3>
-
-                <p>
-                    Problem Solving,
-                    Team Leadership,
-                    Collaboration,
-                    Presentation
-                </p>
-
-            </div>
-            <button class="scroll-btn right" onclick="scrollGrid('skills-grid', 300)"><i class="fa-solid fa-chevron-right"></i></button>
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="grid cards-2" role="list">
+          <article role="listitem" class="project-card glass-card">
+            <h3>LipiSathi: Offline Transliteration</h3>
+            <p>OCR + deep-learning based multilingual transliteration for public street signage with ~95% accuracy.</p>
+            <p class="tags">Team Lead • OCR • DL • NLP</p>
+            <div class="links"><a href="https://github.com/SIH-2025-Word-Weavers" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
+          <article role="listitem" class="project-card glass-card">
+            <h3>Automated AI Timetable Generation</h3>
+            <p>Constraint-satisfaction scheduling engine generating conflict-free timetables in ~0.3–0.4s.</p>
+            <p class="tags">CSP • AI • Optimization</p>
+            <div class="links"><a href="https://github.com/AdhimulamBhargavSaiViswanath-05/TimeTableGeneration" target="_blank" rel="noopener">GitHub</a><a href="https://tt.aihub-vvitu.social/" target="_blank" rel="noopener">Live Demo</a></div>
+          </article>
+          <article role="listitem" class="project-card glass-card">
+            <h3>Custom NLP Stemming Engine</h3>
+            <p>Rule-based modular stemming pipeline with ~95% stemming accuracy for NLP workflows.</p>
+            <p class="tags">NLP • Python • Preprocessing</p>
+            <div class="links"><a href="https://github.com/AdhimulamBhargavSaiViswanath-05/Custom_NLP_Stemming_Engine" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
+          <article role="listitem" class="project-card glass-card">
+            <h3>Bus Service Prediction System</h3>
+            <p>Random-forest regression for ticket-pricing and demand forecasting with R² 0.96.</p>
+            <p class="tags">ML • Random Forest • Regression</p>
+            <div class="links"><a href="https://github.com/AdhimulamBhargavSaiViswanath-05/bus-traffic-price-prediction" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
+          <article role="listitem" class="project-card glass-card">
+            <h3>Amazon Product Trend Analysis</h3>
+            <p>Price and sentiment trend discovery through large-scale e-commerce data scraping and EDA.</p>
+            <p class="tags">Web Scraping • EDA • Visualization</p>
+            <div class="links"><a href="https://github.com/AdhimulamBhargavSaiViswanath-05/AmazonWebScrapping" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
         </div>
-
+      </div>
     </section>
 
-    <!-- Projects -->
-
-    <section id="projects"
-             class="section reveal">
-
-        <h2 class="section-title">
-            Featured Projects
-        </h2>
-
-        <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollGrid('projects-grid', -300)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="projects-grid" id="projects-grid">
-
-                <div class="project-card">
-                <div class="scan-line"></div>
-                <div style="display:flex; justify-content:center; margin-bottom:15px;">
-                    <img src="assets/LipiSathi_Logo.png" alt="LipiSathi" style="height:60px; width:auto; object-fit:contain;">
-                </div>
-                <h3>LipiSathi: Offline Transliteration</h3>
-
-                <p>
-                    Developing an offline multilingual transliteration system for street signs using OCR, 
-                    image processing, and deep learning–based pipelines. Attained ~95% transliteration accuracy.
-                </p>
-
-                <div class="project-links">
-                    <a href="https://github.com/SIH-2025-Word-Weavers" target="_blank">GitHub</a>
-                </div>
-
-                <span>
-                    Team Lead • OCR • DL • NLP
-                </span>
-
-            </div>
-
-            <div class="project-card">
-                <div class="scan-line"></div>
-                <div style="display:flex; justify-content:center; margin-bottom:15px;">
-                    <img src="assets/NLP_Logo.png" alt="Timetable" style="height:60px; width:auto; object-fit:contain;">
-                </div>
-                <h3>
-                    Automated AI Timetable Generation
-                </h3>
-
-                <p>
-                    Constraint satisfaction–based scheduling system to automate academic timetable generation. 
-                    Generated conflict-free timetables in ~0.3–0.4s.
-                </p>
-
-                <div class="project-links">
-                    <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/TimeTableGeneration" target="_blank">GitHub</a>
-                    <a href="https://tt.aihub-vvitu.social/" target="_blank">Live Demo</a>
-                </div>
-
-                <span>
-                    CSP • AI • Optimization
-                </span>
-
-            </div>
-
-            <div class="project-card">
-                <div class="scan-line"></div>
-                <div style="display:flex; justify-content:center; margin-bottom:15px;">
-                    <img src="assets/NLP_Logo.png" alt="NLP" style="height:60px; width:auto; object-fit:contain;">
-                </div>
-                <h3>
-                    Custom NLP Stemming Engine
-                </h3>
-
-                <p>
-                    Modular rule-based stemming engine using ordered linguistic transformations. 
-                    Achieved ~95% stemming accuracy for NLP workflows.
-                </p>
-
-                <div class="project-links">
-                    <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/Custom_NLP_Stemming_Engine" target="_blank">GitHub</a>
-                </div>
-
-                <span>
-                    NLP • Python • Preprocessing
-                </span>
-
-            </div>
-
-            <div class="project-card">
-                <div class="scan-line"></div>
-                <div style="display:flex; justify-content:center; margin-bottom:15px;">
-                    <img src="assets/Bus_Price_Prediction.png" alt="Bus Prediction" style="height:60px; width:auto; object-fit:contain;">
-                </div>
-                <h3>
-                    Bus Service Prediction System
-                </h3>
-
-                <p>
-                    Built ML models (Random Forest R²: 0.96) for predicting bus passenger demand 
-                    and ticket pricing using advanced regression techniques.
-                </p>
-
-                <div class="project-links">
-                    <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/bus-traffic-price-prediction" target="_blank">GitHub</a>
-                </div>
-
-                <span>
-                    ML • Random Forest • Regression
-                </span>
-
-            </div>
-
-            <div class="project-card">
-                <div class="scan-line"></div>
-                <h3>
-                    Amazon Product Trend Analysis
-                </h3>
-
-                <p>
-                    Scraped and analyzed Amazon datasets to identify price trends, 
-                    review popularity patterns, and rating-price correlations.
-                </p>
-
-                <div class="project-links">
-                    <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/AmazonWebScrapping" target="_blank">GitHub</a>
-                </div>
-
-                <span>
-                    Web Scraping • EDA • visualization
-                </span>
-
-            </div>
-
-            <button class="scroll-btn right" onclick="scrollGrid('projects-grid', 300)"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-
+    <section id="experience" class="section container">
+      <h2>Experience</h2>
+      <div class="timeline" role="list">
+        <article role="listitem" class="timeline-item glass-card">
+          <h3>AWS Cloud Computing &amp; DevOps Intern</h3>
+          <p class="meta">APSSDC x AWS Academy • May 2026 – Present</p>
+          <ul>
+            <li>Hands-on work with AWS cloud, Linux administration, and DevOps fundamentals.</li>
+            <li>Practical exposure to EC2, SSH, NGINX, and static deployment workflows.</li>
+          </ul>
+          <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/aws-devops-learning-journey" target="_blank" rel="noopener">GitHub</a>
+        </article>
+        <article role="listitem" class="timeline-item glass-card">
+          <h3><a href="https://aihub-vvitu.social/" target="_blank" rel="noopener">AI-HUB@VVIT</a></h3>
+          <p class="meta">Apps Developer &amp; Frontend Designer • Jan 2025 – Present</p>
+          <ul>
+            <li>Founding student contributor helping evolve AI-HUB from GitHub Pages to custom-domain platform.</li>
+            <li>Built and deployed timetable generator and contributed to UI/UX systems.</li>
+            <li>Collaborated with 20+ VVIT students and alumni across hackathons and product iterations.</li>
+          </ul>
+          <div class="links"><a href="https://aihub-vvitu.social/" target="_blank" rel="noopener">Website</a><a href="https://aihub-vvit.github.io" target="_blank" rel="noopener">GitHub</a></div>
+        </article>
+      </div>
     </section>
 
-    <!-- Coding Profiles Intelligence -->
-    <section id="coding-profiles" class="section reveal">
-        <h2 class="section-title">Coding Intelligence</h2>
-        <div class="profiles-grid">
-            
-            <!-- CodeChef Card -->
-            <a href="https://www.codechef.com/users/vvit23bq1a4201" target="_blank" class="profile-widget codechef">
-                <div class="widget-header">
-                    <img src="assets/codechef.png" alt="CodeChef">
-                    <span class="live-tag">Live Profile</span>
-                </div>
-                <div class="widget-body">
-                    <h3>CodeChef</h3>
-                    <p>vvit23bq1a4201</p>
-                </div>
-                <div class="widget-footer">
-                    <span>View Performance</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </div>
-            </a>
-
-            <!-- HackerRank Card -->
-            <a href="https://www.hackerrank.com/profile/bhargavsai_2005" target="_blank" class="profile-widget hackerrank">
-                <div class="widget-header">
-                    <img src="assets/hackerrank.png" alt="HackerRank">
-                    <span class="live-tag">Live Profile</span>
-                </div>
-                <div class="widget-body">
-                    <h3>HackerRank</h3>
-                    <p>bhargavsai_2005</p>
-                </div>
-                <div class="widget-footer">
-                    <span>View Profile</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </div>
-            </a>
-
-            <!-- CodeForces Card -->
-            <a href="https://codeforces.com/profile/bhargavsai_2005" target="_blank" class="profile-widget codeforces">
-                <div class="widget-header">
-                    <img src="assets/CodeForce.png" alt="CodeForces">
-                    <span class="live-tag">Live Profile</span>
-                </div>
-                <div class="widget-body">
-                    <h3>CodeForces</h3>
-                    <p>bhargavsai_2005</p>
-                </div>
-                <div class="widget-footer">
-                    <span>View Profile</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </div>
-            </a>
-
-            <!-- SmartInterviews Card -->
-            <a href="https://hive.smartinterviews.in/profile/bhargavsai_2005" target="_blank" class="profile-widget smartinterviews">
-                <div class="widget-header">
-                    <img src="assets/smartInterviews.png" alt="Smart Interviews">
-                    <span class="live-tag">Live Profile</span>
-                </div>
-                <div class="widget-body">
-                    <h3>Smart Interviews</h3>
-                    <p>bhargavsai_2005</p>
-                </div>
-                <div class="widget-footer">
-                    <span>View Progress</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </div>
-            </a>
-
+    <section id="education" class="section section-alt">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="grid cards-3" role="list">
+          <article role="listitem" class="glass-card"><h3>B.Tech – CSE (AI &amp; ML)</h3><p>Vasireddy Venkatadri Institute of Technology (VVIT)</p><p>2023 – 2027 • CGPA 8.36/10.0 (up to III-I)</p></article>
+          <article role="listitem" class="glass-card"><h3>Intermediate – MPC</h3><p>Sri Chaitanya Junior College</p><p>2021 – 2023 • 939 / 1000</p></article>
+          <article role="listitem" class="glass-card"><h3>SSC</h3><p>Viveka High School</p><p>2020 – 2021 • 600 / 600</p></article>
         </div>
+      </div>
     </section>
 
-    <!-- GitHub Intelligence -->
-    <section id="github-intelligence" class="section glass reveal">
-        <h2 class="section-title">GitHub Analytics</h2>
-        <div class="github-stats-container">
-            <!-- Alternative reliable hosting for GitHub Stats -->
-            <div class="github-card">
-                <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=AdhimulamBhargavSaiViswanath-05&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" alt="GitHub Stats">
-            </div>
-            
-            <div class="github-card">
-                <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=AdhimulamBhargavSaiViswanath-05&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117" alt="Top Languages">
-            </div>
-            <div class="github-card">
-                <img src="https://github-readme-streak-stats.herokuapp.com/?user=AdhimulamBhargavSaiViswanath-05&theme=tokyonight&hide_border=true&background=0d1117" alt="GitHub Streak">
-            </div>
-        </div>
+    <section id="certifications" class="section container">
+      <h2>Certifications</h2>
+      <div class="grid cards-3" role="list">
+        <article role="listitem" class="glass-card"><h3>Remote Sensing &amp; GIS — IIRS (ISRO)</h3><p>Summer School 2021 • Score: 131/140</p></article>
+        <article role="listitem" class="glass-card"><h3>Deep Learning Fundamentals — WorldQuant University</h3><p>2026</p></article>
+        <article role="listitem" class="glass-card"><h3>AWS Academy Cloud Foundations</h3><p>2026</p></article>
+        <article role="listitem" class="glass-card"><h3>Generative AI — Google Cloud Skills Boost (L4G)</h3><p>2024</p></article>
+        <article role="listitem" class="glass-card"><h3>Google Cloud Public Profile</h3><p><a href="https://www.skills.google/public_profiles/2cbd3849-023a-4f89-8be1-3de92341f097" target="_blank" rel="noopener">View badges</a></p></article>
+        <article role="listitem" class="glass-card"><h3>Credly Badge Profile</h3><p><a href="https://www.credly.com/users/bhargav-sai-viswanath-adhimulam/" target="_blank" rel="noopener">View achievements</a></p></article>
+      </div>
     </section>
 
-    <!-- Experience -->
-
-    <section id="experience"
-             class="section glass reveal">
-
-        <h2 class="section-title">
-            Experience
-        </h2>
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-                <div class="exp-header">
-                    <img src="assets/awsnaipunyamapssdc.png" alt="APSSDC AWS" class="exp-logo">
-                    <h3>AWS Cloud Computing & DevOps Intern</h3>
-                </div>
-                <p class="role">APSSDC x AWS Academy</p>
-                <span class="duration">May 2026 – Present</span>
-                <ul class="experience-details">
-                    <li>Working on AWS Cloud Computing, Linux, & DevOps fundamentals through hands-on infrastructure and deployment tasks.</li>
-                    <li>Gaining practical exposure to EC2, SSH, NGINX configuration, and static website deployment workflows.</li>
-                </ul>
-                <div class="project-links">
-                    <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/aws-devops-learning-journey" target="_blank text-decoration: none;">GitHub</a>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-
-                <div class="exp-header">
-                    <img src="assets/aihublogo.png" alt="AI-HUB" class="exp-logo">
-                    <h3>
-                        <a href="https://aihub-vvitu.social/" target="_blank" style="color: inherit; text-decoration: none;">AI-HUB@VVIT</a>
-                    </h3>
-                </div>
-
-                <p class="role">
-                    Apps Developer & Frontend Designer (UI/UX)
-                </p>
-
-                <span class="duration">
-                    Jan 2025 - Present
-                </span>
-
-                <ul class="experience-details">
-                    <li>Student-driven AI community dedicated to leveraging AI through collaborative development and open-source contributions.</li>
-                    <li>Founding member contributing to the growth of the AI-HUB platform from GitHub Pages to a custom-domain AI ecosystem.</li>
-                    <li>Developed and deployed the Automated AI Timetable Generation system while contributing to AI platform UI/UX.</li>
-                    <li>Collaborating with 20+ VVIT students, alumni, and peers across hackathons and continuous platform development.</li>
-                </ul>
-
-                <div class="project-links">
-                    <a href="https://aihub-vvitu.social/" target="_blank">Website</a>
-                    <a href="https://aihub-vvit.github.io" target="_blank">GitHub</a>
-                </div>
-
-            </div>
-
+    <section id="coding" class="section section-alt">
+      <div class="container">
+        <h2>Coding Intelligence</h2>
+        <div class="grid cards-2" role="list">
+          <article role="listitem" class="glass-card"><h3>CodeChef</h3><p>vvit23bq1a4201</p><a href="https://www.codechef.com/users/vvit23bq1a4201" target="_blank" rel="noopener">View profile</a></article>
+          <article role="listitem" class="glass-card"><h3>HackerRank</h3><p>bhargavsai_2005</p><a href="https://www.hackerrank.com/profile/bhargavsai_2005" target="_blank" rel="noopener">View profile</a></article>
+          <article role="listitem" class="glass-card"><h3>Codeforces</h3><p>bhargavsai_2005</p><a href="https://codeforces.com/profile/bhargavsai_2005" target="_blank" rel="noopener">View profile</a></article>
+          <article role="listitem" class="glass-card"><h3>Smart Interviews</h3><p>bhargavsai_2005</p><a href="https://hive.smartinterviews.in/profile/bhargavsai_2005" target="_blank" rel="noopener">View profile</a></article>
         </div>
-
+      </div>
     </section>
 
-    <!-- Education -->
-
-    <section id="education"
-             class="section reveal">
-
-        <h2 class="section-title">
-            Education
-        </h2>
-
-        <div class="education-grid">
-
-            <div class="education-card">
-                <div class="edu-header">
-                    <img src="assets/VVIT_Logo.png" alt="VVIT" class="edu-logo">
-                    <h3>B.Tech – CSE (AI & ML)</h3>
-                </div>
-                <p class="institution">Vasireddy Venkatadri Institute of Technology (VVIT)</p>
-                <p class="location">Namburu | 2023 – 2027</p>
-                <p class="grade">CGPA: 8.36/10.0 (up to III-I)</p>
-            </div>
-
-            <div class="education-card">
-                <div class="edu-header">
-                    <img src="assets/srichaitanya_clg_Logo.jpg" alt="Sri Chaitanya" class="edu-logo">
-                    <h3>Intermediate – MPC</h3>
-                </div>
-                <p class="institution">Sri Chaitanya Junior College (SCJC)</p>
-                <p class="location">Tenali | 2021 – 2023</p>
-                <p class="grade">Marks: 939 / 1000</p>
-            </div>
-
-            <div class="education-card">
-                <div class="edu-header">
-                    <img src="assets/Vivek_School_Logo.png" alt="Viveka High School" class="edu-logo">
-                    <h3>SSC (10th Class)</h3>
-                </div>
-                <p class="institution">Viveka High School (VHS)</p>
-                <p class="location">Tenali | 2020 – 2021</p>
-                <p class="grade">Marks: 600 / 600</p>
-            </div>
-
-        </div>
-
+    <section id="achievements" class="section container">
+      <h2>Achievements &amp; Highlights</h2>
+      <div class="grid cards-2" role="list">
+        <article role="listitem" class="glass-card"><h3>Smart India Hackathon (SIH)</h3><p>National WR 6 (Top 7); Internal Top 50/256+ (2025)</p></article>
+        <article role="listitem" class="glass-card"><h3>Hologram Project</h3><p>First Prize — VVIT Science Exhibition (2023)</p></article>
+        <article role="listitem" class="glass-card"><h3>RHCSA Workshop</h3><p>Phase 1 &amp; Phase 2 — VVIT x Red Hat (2025)</p></article>
+        <article role="listitem" class="glass-card"><h3>Data Analysis Using Python</h3><p>APSSDC, VVIT Google CodeLab (2024)</p></article>
+        <article role="listitem" class="glass-card"><h3>Position of Responsibility</h3><p>Class Representative, Dept. of CSM, VVIT (2023–Present)</p></article>
+      </div>
     </section>
 
-    <!-- Certificates -->
-    <section id="certifications" class="section glass reveal">
-        <h2 class="section-title">Certifications</h2>
-        
-        <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollGrid('cert-grid', -300)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="cert-grid" id="cert-grid">
-
-                <div class="cert-item">
-                    <img src="assets/isro_iirs_logo.png" alt="ISRO IIRS" class="cert-logo">
-                    <p>Remote Sensing & GIS – IIRS (ISRO) Summer School (2021)</p>
-                    <small>Score: 131/140</small>
-                </div>
-
-                <div class="cert-item">
-                    <img src="assets/WorldQuantDL.png" alt="WorldQuant University" class="cert-logo">
-                    <p>Deep Learning Fundamentals – WorldQuant University (2026)</p>
-                </div>
-
-                <div class="cert-item">
-                    <img src="assets/aws.png" alt="AWS" class="cert-logo">
-                    <p>AWS Academy Cloud Foundations – 2026</p>
-                </div>
-
-                <div class="cert-item">
-                    <img src="assets/GoogleCloudSkillsProfile.png" alt="Google Cloud" class="cert-logo">
-                    <p>Generative AI – Google Cloud Skills Boost (L4G), 2024</p>
-                </div>
-
-                <!-- Google Cloud Profile Card -->
-                <a href="https://www.skills.google/public_profiles/2cbd3849-023a-4f89-8be1-3de92341f097" target="_blank" class="cert-item profile-link-card">
-                    <img src="assets/google_cloud_logo.jpeg" alt="Google Cloud Profile" class="cert-logo">
-                    <p>Google Cloud Public Profile</p>
-                    <div class="widget-footer">
-                        <span>View Badges</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-                </a>
-
-                <!-- Credly Profile Card -->
-                <a href="https://www.credly.com/users/bhargav-sai-viswanath-adhimulam/" target="_blank" class="cert-item profile-link-card">
-                    <img src="assets/Credly.png" alt="Credly" class="cert-logo">
-                    <p>Credly Badge Profile</p>
-                    <div class="widget-footer">
-                        <span>View Achievements</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-                </a>
-
-            </div>
-            <button class="scroll-btn right" onclick="scrollGrid('cert-grid', 300)"><i class="fa-solid fa-chevron-right"></i></button>
+    <section id="contact" class="section section-alt">
+      <div class="container contact-wrap">
+        <div>
+          <h2>Contact</h2>
+          <p>Open to AI/ML internships, collaborative product building, and impactful engineering opportunities.</p>
+          <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:bhargavsaiadhimulam12@gmail.com">bhargavsaiadhimulam12@gmail.com</a></p>
+          <p><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+917013833594">+91 70138 33594</a></p>
+          <div class="socials" role="list" aria-label="Social profiles">
+            <a role="listitem" aria-label="LinkedIn" href="https://www.linkedin.com/in/AdhimulamBhargavSaiViswanath" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+            <a role="listitem" aria-label="GitHub" href="https://github.com/AdhimulamBhargavSaiViswanath-05" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+            <a role="listitem" aria-label="Location" href="https://www.google.com/maps/place/Tenali" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i></a>
+          </div>
         </div>
+        <div class="glass-card contact-card">
+          <h3>Quick Actions</h3>
+          <a class="btn btn-primary" href="assets/resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <button class="btn btn-secondary" id="copy-email" aria-label="Copy email address">Copy Email</button>
+          <p id="copy-status" aria-live="polite"></p>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Achievements -->
-    <section id="achievements" class="section reveal">
-        <h2 class="section-title">Achievements</h2>
-        <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollGrid('ach-grid', -300)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="achievements-grid" id="ach-grid">
-                
-                <div class="achievement-card">
-                    <img src="assets/sih_logo.png" alt="SIH" class="ach-logo">
-                    <h3>Smart India Hackathon (SIH)</h3>
-                    <p>National WR 6 (Top 7); Internal Top 50/256+ (2025)</p>
-                </div>
+  <footer class="site-footer">
+    <p>© 2026 Adhimulam Bhargav Sai Viswanath | AI Engineer Portfolio</p>
+  </footer>
 
-                <div class="achievement-card">
-                    <img src="assets/hologram_project.png" alt="Hologram" class="ach-logo">
-                    <h3>Hologram Project</h3>
-                    <p>First Prize – VVIT Science Exhibition (2023)</p>
-                </div>
-
-            </div>
-            <button class="scroll-btn right" onclick="scrollGrid('ach-grid', 300)"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-    <!-- Workshops -->
-    <section id="workshops" class="section glass reveal">
-        <h2 class="section-title">Workshops</h2>
-        <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollGrid('work-grid', -300)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="workshops-grid" id="work-grid">
-                
-                <div class="workshop-card">
-                    <img src="assets/rhcsa_logo.jpg" alt="RHCSA" class="work-logo">
-                    <h3>RHCSA Workshop</h3>
-                    <p>Phase1 & Phase2 - VVIT x Red Hat (2025)</p>
-                </div>
-
-                <div class="workshop-card">
-                    <img src="assets/dataanalysisworkshop.png" alt="APSSDC" class="work-logo">
-                    <h3>Data Analysis Using Python</h3>
-                    <p>APSSDC, VVIT Google CodeLab (2024)</p>
-                </div>
-
-            </div>
-            <button class="scroll-btn right" onclick="scrollGrid('work-grid', 300)"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-    <!-- Responsibility -->
-
-    <section id="responsibility"
-             class="section reveal">
-
-        <h2 class="section-title">
-            Positions of Responsibility
-        </h2>
-
-        <div class="responsibility-item">
-            <div style="display:flex; align-items:center; gap:20px; margin-bottom:15px;">
-                <img src="assets/VVIT_SAC_Logo.jpg" alt="VVIT SAC" style="height:50px; width:auto; border-radius:8px;">
-                <h3>Class Representative (CR)</h3>
-            </div>
-            <p>Dept. of CSM, VVIT (2023–Present)</p>
-            <p>Acting as the primary point of contact between faculty and students, ensuring effective communication and coordination.</p>
-        </div>
-
-    </section>
-
-    <!-- Footer -->
-
-    <footer>
-
-        <div class="footer-connect">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="footer-links">
-                <a href="https://www.linkedin.com/in/AdhimulamBhargavSaiViswanath" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/AdhimulamBhargavSaiViswanath-05" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:bhargavsaiadhimulam12@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-                <a href="tel:+917013833594"><i class="fa-solid fa-phone"></i></a>
-                <a href="https://www.google.com/maps/place/Tenali" target="_blank"><i class="fa-solid fa-location-dot"></i></a>
-            </div>
-            <div class="footer-info">
-                <span><i class="fa-solid fa-envelope"></i> bhargavsaiadhimulam12@gmail.com</span>
-                <span><i class="fa-solid fa-phone"></i> +91 70138 33594</span>
-            </div>
-        </div>
-
-        <p>
-            © 2026 ADHIMULAM BHARGAV SAI VISWANATH | AI Engineer Portfolio
-        </p>
-
-    </footer>
-
-    <!-- Resume Modal -->
-    <div class="resume-modal" id="resume-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Resume Preview</h3>
-                <div class="modal-actions">
-                    <button class="action-btn" id="print-resume" title="Print/Save as PDF">
-                        <i class="fa-solid fa-print"></i>
-                    </button>
-                    <a href="assets/resume.pdf" download class="action-btn" title="Download">
-                        <i class="fa-solid fa-download"></i>
-                    </a>
-                    <button class="action-btn" id="close-modal" title="Close">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
-            <iframe src="assets/resume.pdf" class="resume-viewer" id="resume-iframe"></iframe>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-
+  <script src="js/loader.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <script src="js/canvas.js" defer></script>
+  <script src="js/skills.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/timeline.js" defer></script>
+  <script src="js/counters.js" defer></script>
+  <script src="js/cursor.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
-
 </html>

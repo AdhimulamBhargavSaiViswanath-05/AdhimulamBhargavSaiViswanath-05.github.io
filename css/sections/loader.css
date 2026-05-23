@@ -1,0 +1,2 @@
+.loader-wrap { display: grid; gap: 1rem; justify-items: center; }
+.loader-text { color: var(--text-secondary); font-family: var(--font-code); }

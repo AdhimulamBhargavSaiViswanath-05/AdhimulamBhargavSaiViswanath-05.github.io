@@ -1,0 +1,2 @@
+.project-card { border-left: 3px solid var(--accent-violet); }
+.project-card .tags { margin-top: var(--space-2); color: var(--accent-mint); }
