@@ -3,8 +3,8 @@ const asset = (name) => new URL(`../../assets/${name}`, import.meta.url).href;
 export const site = {
   name: 'Adhimulam Bhargav Sai Viswanath',
   initials: 'ABSV',
-  tagline: 'AI/ML student building useful systems with strong product polish.',
-  role: 'AI Engineer • ML Developer • NLP Builder • Cloud Learner',
+  tagline: 'Artificial Intelligence and Machine Learning student in Computer Science and Engineering, building useful systems with strong product polish.',
+  role: 'Artificial Intelligence • Machine Learning • NLP • Cloud • UI Systems',
   resume: asset('resume.pdf'),
   profile: asset('profile.jpg'),
   email: 'bhargavsaiadhimulam12@gmail.com',

@@ -4,7 +4,7 @@ import * as Avatar from '@radix-ui/react-avatar';
 import * as Progress from '@radix-ui/react-progress';
 import { ArrowTopRightIcon, CalendarIcon, ChevronDownIcon, CodeIcon, LayersIcon, LightningBoltIcon, PersonIcon, RocketIcon, StarIcon } from '@radix-ui/react-icons';
 import { Separator } from '@radix-ui/react-separator';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import NavMenu from './components/NavMenu';
 import SectionHeading from './components/SectionHeading';
 import ResumeDialog from './components/ResumeDialog';
@@ -69,7 +69,29 @@ function useRevealAndProgress() {
   }, []);
 }
 
+function getInitialTheme() {
+  if (typeof window === 'undefined') {
+    return 'dark';
+  }
+
+  const savedTheme = window.localStorage.getItem('theme');
+
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    return savedTheme;
+  }
+
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
 function App() {
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    window.localStorage.setItem('theme', theme);
+  }, [theme]);
+
   useRevealAndProgress();
 
   return (
@@ -82,7 +104,7 @@ function App() {
         <div className="progress-bar" />
       </div>
 
-      <NavMenu />
+      <NavMenu theme={theme} onToggleTheme={() => setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'))} />
 
       <main id="main">
         <section className="hero-section">
@@ -91,7 +113,7 @@ function App() {
 
           <div className="hero-grid">
             <div className="hero-copy" data-reveal>
-              <p className="hero-kicker">AI • ML • NLP • Cloud • UI Engineering</p>
+              <p className="hero-kicker">Artificial Intelligence • Machine Learning • NLP • Cloud • UI Systems</p>
               <h1>
                 {site.name}
               </h1>
@@ -160,7 +182,7 @@ function App() {
           <SectionHeading
             eyebrow="Foundation"
             title="About"
-            description="A version of the story that keeps the original identity but presents it with cleaner hierarchy and stronger product polish."
+            description="A sharper portfolio story built around AI, ML, and product-minded engineering while keeping your original identity intact."
           />
 
           <div className="about-grid">
@@ -211,7 +233,7 @@ function App() {
           <SectionHeading
             eyebrow="Capabilities"
             title="Skills"
-            description="Radix Tabs keep the categories clear while the progress indicators turn the skill list into a more scannable system."
+            description="Grouped by depth and focus so your core engineering strengths read quickly and feel deliberate."
           />
 
           <Tabs.Root className="skills-tabs" defaultValue={skillGroups[0].id} data-reveal>
@@ -257,7 +279,7 @@ function App() {
           <SectionHeading
             eyebrow="Proof of work"
             title="Projects"
-            description="The strongest project becomes the anchor card, and the rest are still presented with enough metrics to make the story credible at a glance."
+            description="The flagship work leads first, with the supporting projects framed around outcomes, stack, and deployment context."
           />
 
           <div className="project-stack">
@@ -277,7 +299,7 @@ function App() {
           <SectionHeading
             eyebrow="Professional growth"
             title="Experience"
-            description="A vertical timeline keeps the chronology intact and makes the internship and platform work easier to scan."
+            description="Chronology first, impact second: the timeline keeps internship and platform contributions easy to scan."
           />
 
           <div className="timeline" data-reveal>
@@ -321,7 +343,7 @@ function App() {
           <SectionHeading
             eyebrow="Academic path"
             title="Education"
-            description="The education timeline stays compact and emphasizes the context that actually matters for the portfolio."
+            description="Compact, readable, and centered on the academic context that matters for your target roles."
           />
 
           <div className="education-grid" data-reveal>
@@ -348,7 +370,7 @@ function App() {
           <SectionHeading
             eyebrow="Credentials and impact"
             title="Proof"
-            description="Certifications, achievements, workshops, and responsibility are grouped here so the evidence feels intentional rather than scattered."
+            description="Grouped evidence for certifications, achievements, workshops, and leadership so the page feels cohesive."
           />
 
           <Accordion.Root className="proof-accordion" type="multiple" defaultValue={['certifications', 'achievements']} data-reveal>
@@ -438,7 +460,7 @@ function App() {
           <SectionHeading
             eyebrow="Coding profiles"
             title="Coding Intelligence"
-            description="Each profile is presented as a live card instead of a brittle analytics widget, which is cleaner for static deployment."
+            description="Each profile appears as a live card, keeping the section useful without feeling like a generic dashboard."
           />
 
           <div className="profile-grid" data-reveal>
@@ -452,7 +474,7 @@ function App() {
           <SectionHeading
             eyebrow="Next conversation"
             title="Contact"
-            description="A focused closing section that makes it easy to reach out, download the resume, or jump to a profile." 
+            description="A focused closing section that makes it easy to reach out, download the resume, or jump to a profile."
           />
 
           <div className="contact-panel" data-reveal>
@@ -478,7 +500,7 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <p>© 2026 {site.name}. Built for GitHub Pages with Radix UI.</p>
+        <p>© 2026 {site.name}. Built for GitHub Pages.</p>
         <div className="footer-links">
           <a href={site.links.github} target="_blank" rel="noreferrer">GitHub</a>
           <a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>

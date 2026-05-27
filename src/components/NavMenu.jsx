@@ -1,10 +1,10 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import * as Dialog from '@radix-ui/react-dialog';
-import { Cross2Icon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { Cross2Icon, HamburgerMenuIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 import { navigation, site } from '../data/siteContent';
 
-export default function NavMenu() {
+export default function NavMenu({ theme, onToggleTheme }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -30,6 +30,11 @@ export default function NavMenu() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
+        <button className="theme-toggle" type="button" onClick={onToggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+        </button>
+
         <Dialog.Root open={mobileOpen} onOpenChange={setMobileOpen}>
           <Dialog.Trigger className="mobile-trigger" aria-label="Open navigation menu">
             <HamburgerMenuIcon />
@@ -39,9 +44,15 @@ export default function NavMenu() {
             <Dialog.Content className="mobile-drawer">
               <div className="mobile-drawer-header">
                 <Dialog.Title>Navigate</Dialog.Title>
-                <Dialog.Close className="icon-button" aria-label="Close navigation menu">
-                  <Cross2Icon />
-                </Dialog.Close>
+                <div className="drawer-header-actions">
+                  <button className="theme-toggle theme-toggle-drawer" type="button" onClick={onToggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
+                    {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+                    <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+                  </button>
+                  <Dialog.Close className="icon-button" aria-label="Close navigation menu">
+                    <Cross2Icon />
+                  </Dialog.Close>
+                </div>
               </div>
               <nav className="mobile-nav" aria-label="Mobile navigation">
                 {navigation.map((item) => (

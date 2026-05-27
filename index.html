@@ -6,6 +6,15 @@
     <meta name="description" content="ABSV portfolio - AI/ML student portfolio rebuilt with modern UI, Radix UI, and static GitHub Pages deployment." />
     <title>Adhimulam Bhargav Sai Viswanath | Portfolio</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem('theme');
+        const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : preferredTheme;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </head>
   <body>
