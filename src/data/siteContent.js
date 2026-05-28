@@ -1,4 +1,32 @@
-const asset = (name) => new URL(`../../assets/${name}`, import.meta.url).href;
+const assetModules = import.meta.glob('../../assets/*.{png,jpg,jpeg,svg,pdf}', {
+  eager: true,
+  import: 'default',
+});
+
+const asset = (name) => {
+  const exactMatch = Object.entries(assetModules).find(([path]) => path.endsWith(`/${name}`));
+
+  if (exactMatch) {
+    return exactMatch[1];
+  }
+
+  const dotIndex = name.lastIndexOf('.');
+  const stem = dotIndex === -1 ? name : name.slice(0, dotIndex);
+  const extension = dotIndex === -1 ? '' : name.slice(dotIndex);
+
+  const fallbackMatch = Object.entries(assetModules)
+    .filter(([path]) => {
+      const fileName = path.split('/').pop() || '';
+      return fileName.startsWith(`${stem}-`) && fileName.endsWith(extension);
+    })
+    .sort((left, right) => (left[0].length - right[0].length))[0];
+
+  if (fallbackMatch) {
+    return fallbackMatch[1];
+  }
+
+  return `/assets/${name}`;
+};
 
 export const site = {
   name: 'Adhimulam Bhargav Sai Viswanath',
