@@ -544,7 +544,7 @@ button {
 }
 
 .hero-avatar {
-  width: min(100%, 320px);
+  width: min(100%, 240px);
   aspect-ratio: 1 / 1;
   margin-inline: auto;
   overflow: hidden;

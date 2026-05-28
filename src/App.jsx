@@ -146,7 +146,6 @@ function App() {
                 </Avatar.Root>
 
                 <div className="hero-visual-copy">
-                  <p className="hero-visual-label">Currently building</p>
                   <h2>LipiSathi and AI scheduling systems</h2>
                   <p>
                     Transliteration, optimization, and deployment-focused work with polished interfaces and measurable outcomes.
