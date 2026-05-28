@@ -42,7 +42,7 @@ export const site = {
     github: 'https://github.com/AdhimulamBhargavSaiViswanath-05',
     linkedin: 'https://www.linkedin.com/in/AdhimulamBhargavSaiViswanath',
     mailto: 'mailto:bhargavsaiadhimulam12@gmail.com',
-    phone: 'tel:+917013833594',
+    phone: 'tel:+91 70138 33594',
     maps: 'https://www.google.com/maps/place/Tenali'
   }
 };
