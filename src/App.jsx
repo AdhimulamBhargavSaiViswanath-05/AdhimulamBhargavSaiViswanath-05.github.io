@@ -485,12 +485,6 @@ function App() {
 
       <footer className="site-footer">
         <p>© 2026 {site.name}. Built for GitHub Pages.</p>
-        <div className="footer-links">
-          <a href={site.links.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href={site.links.mailto}>Email</a>
-          <a href={site.links.phone}>Call</a>
-        </div>
       </footer>
     </div>
   );
