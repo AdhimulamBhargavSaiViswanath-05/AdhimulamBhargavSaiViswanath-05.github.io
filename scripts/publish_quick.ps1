@@ -1,5 +1,6 @@
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-Set-Location $scriptDir
+$projectRoot = Split-Path -Parent $scriptDir
+Set-Location $projectRoot
 
 Remove-Item -Recurse -Force .\assets\* -ErrorAction SilentlyContinue
 Copy-Item -Path .\dist\assets\* -Destination .\assets -Recurse -Force
