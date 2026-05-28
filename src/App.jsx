@@ -2,8 +2,7 @@ import * as Tabs from '@radix-ui/react-tabs';
 import * as Accordion from '@radix-ui/react-accordion';
 import * as Avatar from '@radix-ui/react-avatar';
 import * as Progress from '@radix-ui/react-progress';
-import { ArrowTopRightIcon, CalendarIcon, ChevronDownIcon, CodeIcon, LayersIcon, LightningBoltIcon, PersonIcon, RocketIcon, StarIcon } from '@radix-ui/react-icons';
-import { Separator } from '@radix-ui/react-separator';
+import { ArrowTopRightIcon, CalendarIcon, ChevronDownIcon, RocketIcon, StarIcon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 import NavMenu from './components/NavMenu';
 import SectionHeading from './components/SectionHeading';
@@ -144,34 +143,6 @@ function App() {
                   <Avatar.Image src={site.profile} alt={site.name} />
                   <Avatar.Fallback delayMs={200}>{site.initials}</Avatar.Fallback>
                 </Avatar.Root>
-
-                <div className="hero-visual-copy">
-                  <h2>LipiSathi and AI scheduling systems</h2>
-                  <p>
-                    Transliteration, optimization, and deployment-focused work with polished interfaces and measurable outcomes.
-                  </p>
-                </div>
-
-                <Separator className="separator" />
-
-                <div className="hero-snapshot">
-                  <div>
-                    <PersonIcon />
-                    <span>AI-HUB frontend contributor</span>
-                  </div>
-                  <div>
-                    <CodeIcon />
-                    <span>Static deploys on GitHub Pages</span>
-                  </div>
-                  <div>
-                    <LayersIcon />
-                    <span>Cross-domain project portfolio</span>
-                  </div>
-                  <div>
-                    <LightningBoltIcon />
-                    <span>Accessible, fast, and responsive UI</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
