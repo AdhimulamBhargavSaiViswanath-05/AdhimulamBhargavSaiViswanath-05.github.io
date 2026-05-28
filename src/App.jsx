@@ -138,11 +138,25 @@ function App() {
             </div>
 
             <div className="hero-visual" data-reveal>
-              <div className="hero-card">
+              <div className="hero-card hero-ai-card">
+                <div className="hero-ai-backdrop" aria-hidden="true">
+                  <span className="hero-ai-orbit hero-ai-orbit-a" />
+                  <span className="hero-ai-orbit hero-ai-orbit-b" />
+                  <span className="hero-ai-node hero-ai-node-a" />
+                  <span className="hero-ai-node hero-ai-node-b" />
+                  <span className="hero-ai-node hero-ai-node-c" />
+                  <span className="hero-ai-node hero-ai-node-d" />
+                  <span className="hero-ai-node hero-ai-node-e" />
+                </div>
                 <Avatar.Root className="hero-avatar">
                   <Avatar.Image src={site.profile} alt={site.name} />
                   <Avatar.Fallback delayMs={200}>{site.initials}</Avatar.Fallback>
                 </Avatar.Root>
+                <div className="hero-ai-caption" aria-hidden="true">
+                  <span>Neural nets</span>
+                  <span>Data pipelines</span>
+                  <span>Model intuition</span>
+                </div>
               </div>
             </div>
           </div>

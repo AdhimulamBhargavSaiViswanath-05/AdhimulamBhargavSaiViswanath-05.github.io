@@ -407,6 +407,34 @@ button {
 .hero-section {
   position: relative;
   padding: clamp(3rem, 7vw, 6.5rem) 0 4rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-section::before,
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-section::before {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(72, 215, 255, 0.16), transparent 26%),
+    radial-gradient(circle at 82% 20%, rgba(139, 123, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 50% 110%, rgba(69, 244, 194, 0.08), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02), transparent 42%);
+  opacity: 0.9;
+}
+
+.hero-section::after {
+  background:
+    linear-gradient(115deg, transparent 0 30%, rgba(72, 215, 255, 0.06) 31%, transparent 32%),
+    linear-gradient(245deg, transparent 0 58%, rgba(139, 123, 255, 0.05) 59%, transparent 60%),
+    radial-gradient(circle at center, transparent 48%, rgba(5, 9, 19, 0.26) 100%);
+  opacity: 0.85;
 }
 
 .hero-orb {
@@ -439,6 +467,17 @@ button {
   grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
+}
+
+.hero-grid::before {
+  content: '';
+  position: absolute;
+  inset: 12% 10% auto;
+  height: 74%;
+  background: radial-gradient(circle, rgba(72, 215, 255, 0.1), transparent 62%);
+  filter: blur(70px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .hero-copy h1 {
@@ -544,7 +583,7 @@ button {
 }
 
 .hero-avatar {
-  width: min(100%, 180px);
+  width: min(100%, 156px);
   aspect-ratio: 1 / 1;
   margin-inline: auto;
   overflow: hidden;
@@ -555,10 +594,10 @@ button {
 }
 
 .hero-avatar img {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 6%;
   border-radius: 50%;
 }
 
@@ -969,16 +1008,172 @@ button {
 .achievement-card,
 .workshop-card,
 .profile-card {
+  position: relative;
+  min-height: 430px;
   border-radius: var(--radius-xl);
   padding: 1.15rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  isolation: isolate;
 }
 
-.timeline-card-header,
+.hero-card::before,
+.hero-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-card::before {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(72, 215, 255, 0.09), transparent 34%),
+    radial-gradient(circle at 22% 18%, rgba(139, 123, 255, 0.09), transparent 22%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 26px);
+  opacity: 0.7;
+}
+
+.hero-card::after {
+  inset: 10%;
+  border-radius: calc(var(--radius-xl) - 8px);
+  border: 1px solid color-mix(in srgb, var(--cyan) 14%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--violet) 8%, transparent) inset, 0 0 40px rgba(72, 215, 255, 0.08);
+}
+
+.hero-ai-card {
+  align-items: center;
+}
+
+.hero-ai-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-ai-orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--cyan) 24%, transparent);
+  filter: drop-shadow(0 0 18px rgba(72, 215, 255, 0.18));
+}
+
+.hero-ai-orbit-a {
+  inset: 12% 14% 24%;
+  animation: hero-orbit-spin 22s linear infinite;
+}
+
+.hero-ai-orbit-b {
+  inset: 20% 8% 16%;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--violet) 24%, transparent);
+  animation: hero-orbit-spin-reverse 28s linear infinite;
+}
+
+.hero-ai-node {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, var(--cyan) 42%, rgba(72, 215, 255, 0.22) 72%, transparent 74%);
+  box-shadow: 0 0 22px rgba(72, 215, 255, 0.4);
+  animation: hero-node-pulse 3.6s ease-in-out infinite;
+}
+
+.hero-ai-node::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  border: 1px solid rgba(72, 215, 255, 0.16);
+}
+
+.hero-ai-node-a {
+  top: 22%;
+  left: 30%;
+}
+
+.hero-ai-node-b {
+  top: 26%;
+  right: 26%;
+  animation-delay: -0.8s;
+}
+
+.hero-ai-node-c {
+  bottom: 22%;
+  left: 22%;
+  animation-delay: -1.5s;
+}
+
+.hero-ai-node-d {
+  bottom: 18%;
+  right: 30%;
+  animation-delay: -2.1s;
+}
+
+.hero-ai-node-e {
+  top: 50%;
+  left: 14%;
+  width: 10px;
+  height: 10px;
+  animation-delay: -2.8s;
+}
+
 .card-header,
 .profile-card-header {
   display: flex;
   align-items: center;
   gap: 0.9rem;
+}
+
+.hero-avatar {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 168px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--cyan) 20%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--cyan) 18%, transparent), color-mix(in srgb, var(--violet) 18%, transparent));
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 0 0 8px color-mix(in srgb, var(--surface) 60%, transparent);
+}
+
+.hero-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 6%;
+  border-radius: 50%;
+}
+
+.hero-ai-caption {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 0.25rem;
+}
+
+.hero-ai-caption span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .timeline-card-header img,
@@ -987,8 +1182,8 @@ button {
 .workshop-card img,
 .achievement-card img,
 .credential-card img {
-  width: 54px;
-  height: 54px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
   border-radius: 14px;
   background: color-mix(in srgb, var(--surface) 85%, transparent);
@@ -1038,7 +1233,7 @@ button {
 
 .accordion-trigger {
   width: 100%;
-  display: flex;
+  height: 100%;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -1094,6 +1289,39 @@ button {
 .hero-card:hover .hero-avatar,
 .hero-card:focus-visible .hero-avatar {
   transform: scale(1.015);
+}
+
+@keyframes hero-orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-orbit-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes hero-node-pulse {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
 }
 
 .achievement-grid {

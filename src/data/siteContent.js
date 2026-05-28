@@ -31,7 +31,7 @@ const asset = (name) => {
 export const site = {
   name: 'Adhimulam Bhargav Sai Viswanath',
   initials: 'ABSV',
-  tagline: 'Artificial Intelligence and Machine Learning student in Computer Science and Engineering, building useful systems with strong product polish.',
+  tagline: 'Aspiring AI Engineer | Passionate about Machine Learning and Data Science',
   role: 'Artificial Intelligence • Machine Learning • NLP • Cloud • UI Systems',
   resume: asset('resume.pdf'),
   profile: asset('profile.jpg'),
