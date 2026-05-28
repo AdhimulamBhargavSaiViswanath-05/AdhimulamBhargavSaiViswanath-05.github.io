@@ -625,6 +625,30 @@ button {
   font-family: 'Space Grotesk', sans-serif;
   letter-spacing: -0.03em;
 }
+.workshop-card h3 {
+  font-size: 1.02rem;
+  line-height: 1.22;
+}
+.timeline-card h3,
+.education-card h3,
+.credential-card h3,
+.achievement-card h3,
+.workshop-card h3,
+.profile-card h3,
+.panel h3 {
+  font-size: 1.02rem;
+  line-height: 1.22;
+}
+.timeline-card p,
+.education-card p,
+.credential-card p,
+.achievement-card p,
+.workshop-card p,
+.profile-card-body p,
+.panel p {
+  font-size: 0.92rem;
+  line-height: 1.58;
+}
 
 .hero-visual-copy p {
   margin: 0.8rem 0 0;
@@ -1190,12 +1214,13 @@ button {
 .workshop-card img,
 .achievement-card img,
 .credential-card img {
-  width: 20px;
-  height: 20px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
-  border-radius: 14px;
+  border-radius: 16px;
   background: color-mix(in srgb, var(--surface) 85%, transparent);
-  padding: 0.35rem;
+  padding: 0.45rem;
+  flex-shrink: 0;
 }
 
 .timeline-meta {
@@ -1219,12 +1244,13 @@ button {
 .card-meta {
   margin-top: 0.9rem;
   color: var(--subtle);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
 }
 
 .card-result {
   margin: 0.9rem 0 0;
   color: var(--text);
+  font-size: 0.92rem;
 }
 
 .proof-accordion {
@@ -1250,6 +1276,7 @@ button {
   background: transparent;
   border: 0;
   font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .accordion-content {
@@ -1348,7 +1375,19 @@ button {
 .workshop-card {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 1rem;
+}
+.timeline-card-header div,
+.card-header div,
+.workshop-card div,
+.profile-card-header + * {
+  min-width: 0;
+}
+.timeline-card-header p,
+.card-header p,
+.workshop-card p,
+.profile-card-body p {
+  margin-top: 0.2rem;
 }
 
 .profile-grid {
