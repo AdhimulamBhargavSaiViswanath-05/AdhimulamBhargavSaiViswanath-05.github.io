@@ -36,6 +36,33 @@ B.Tech CSE - AI & ML Student at VVIT | Aspiring AI Engineer | Passionate about M
 
 ---
 
+## 🧠 Who I Am
+
+```python
+class AdhimulamBhargavSaiViswanath:
+  def __init__(self):
+    self.role       = "Aspiring AI Engineer • Apps Developer"
+    self.location   = "Tenali, Andhra Pradesh"
+    self.education  = "B.Tech CSE (AI & ML) — VVIT (2023–2027)"
+    self.resume     = "assets/resume-xLJ7Y0Il-xLJ7Y0Il.pdf"
+    self.expertise  = [
+      "OCR & NLP pipelines",
+      "Modeling: PyTorch, Scikit-Learn",
+      "Deployment: AWS, Docker, GitHub Pages",
+      "Frontend: React, Vite, UI/UX",
+    ]
+    self.currently  = [
+      "Maintaining portfolio & AI-HUB projects",
+      "Building timetable generation and transliteration systems",
+    ]
+    self.contact    = {"email": "bhargavsaiadhimulam12@gmail.com", "linkedin": "https://www.linkedin.com/in/adhimulambhargavsaiviswanath/"}
+
+  def mission(self):
+    return "Build practical AI systems that are performant, interpretable, and useful."
+```
+
+> Visual-first summary: the code-style block condenses key facts so readers scan identity and focus visually on the widgets and project thumbnails above.
+
 ### Featured Projects (visual)
 
 <p align="center">
