@@ -17,10 +17,18 @@ I am **Adhimulam Bhargav Sai Viswanath**, a Computer Science and Engineering stu
 
 ---
 
-## 📊 GitHub Statistics
+## 📊 GitHub Analytics
 These metrics update automatically via local GitHub Actions:
 
-![Bhargav's GitHub Stats](./github-stats.svg)
+<p align="center">
+  <img src="./streak.svg" alt="GitHub Streak" width="48%" />
+  <img src="./stats.svg" alt="GitHub Stats" width="48%" />
+</p>
+
+<p align="center">
+  <img src="./languages.svg" alt="Top Languages" width="97%" />
+</p>
 
 ---
 *Maintained by Adhimulam Bhargav Sai Viswanath. Last updated via automated workflows.*
+
