@@ -17,18 +17,21 @@ I am **Adhimulam Bhargav Sai Viswanath**, a Computer Science and Engineering stu
 
 ---
 
+
+
 ## 📊 GitHub Analytics
-These metrics update automatically via local GitHub Actions and native interfaces:
+These live analytics update automatically based on my public repository activity:
 
 <p align="center">
   <img src="https://rshah.org" alt="Bhargav's Contribution Chart" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./stats.svg" alt="GitHub Stats" width="48%" />
-  <img src="./languages.svg" alt="Top Languages" width="48%" />
+  <img src="https://vercel.app" alt="Profile Stats" width="49%" />
+  <img src="https://vercel.app" alt="Top Languages" width="49%" />
 </p>
 
 ---
+
 *Maintained by Adhimulam Bhargav Sai Viswanath. Last updated via automated workflows.*
 
