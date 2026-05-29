@@ -18,15 +18,15 @@ I am **Adhimulam Bhargav Sai Viswanath**, a Computer Science and Engineering stu
 ---
 
 ## 📊 GitHub Analytics
-These metrics update automatically via local GitHub Actions:
+These metrics update automatically via local GitHub Actions and native interfaces:
 
 <p align="center">
-  <img src="./streak.svg" alt="GitHub Streak" width="48%" />
-  <img src="./stats.svg" alt="GitHub Stats" width="48%" />
+  <img src="https://rshah.org" alt="Bhargav's Contribution Chart" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./languages.svg" alt="Top Languages" width="97%" />
+  <img src="./stats.svg" alt="GitHub Stats" width="48%" />
+  <img src="./languages.svg" alt="Top Languages" width="48%" />
 </p>
 
 ---
