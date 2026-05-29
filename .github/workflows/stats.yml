@@ -5,6 +5,9 @@ on:
     - cron: '0 0 * * *' # Runs daily at midnight
   workflow_dispatch: # Allows manual trigger
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Clears the Node 20 deprecation warning
+
 jobs:
   update-stats:
     runs-on: ubuntu-latest
@@ -19,21 +22,21 @@ jobs:
         uses: cicirello/user-statistician@v1
         with:
           image-file: stats.svg
-          include-languages: false
-          custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
+          max-languages: 0 # Disables the language block on this card
+          colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
       # 2. Generate Languages Analytics breakdown 
       - name: Generate Language Stats
         uses: cicirello/user-statistician@v1
         with:
           image-file: languages.svg
-          include-languages: true
-          custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
+          max-languages: 8 # Shows up to 8 top programming languages
+          colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
       # Commit the local SVG assets back into the branch
       - name: Commit and Push SVGs
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "github-actions[bot]@://github.com"
           git add stats.svg languages.svg
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update profile analytics metrics" && git push)
