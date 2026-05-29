@@ -20,18 +20,19 @@ I am **Adhimulam Bhargav Sai Viswanath**, a Computer Science and Engineering stu
 
 
 ## 📊 GitHub Analytics
-These live analytics update automatically based on my public repository activity:
-
-<p align="center">
-  <img src="https://rshah.org" alt="Bhargav's Contribution Chart" width="100%" />
-</p>
+These live analytics update automatically based on my public activity:
 
 <p align="center">
   <img src="https://vercel.app" alt="Profile Stats" width="49%" />
   <img src="https://vercel.app" alt="Top Languages" width="49%" />
 </p>
 
+<p align="center">
+  <img src="https://herokuapp.com" alt="Commit Streak" width="99%" />
+</p>
+
 ---
+
 
 *Maintained by Adhimulam Bhargav Sai Viswanath. Last updated via automated workflows.*
 
