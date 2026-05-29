@@ -30,9 +30,9 @@ jobs:
           include-languages: true
           custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
-      # 3. Commit Streak Card
+      # 3. Commit Streak Card (FIXED REPOSITORY NAME)
       - name: Generate Streak Stats
-        uses: cicirello/activity-graphs@v1
+        uses: cicirello/user-activity-graphs@v1
         with:
           image-file: streak.svg
           custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d,graphs=58a6ff,points=ff7b72'
@@ -41,6 +41,6 @@ jobs:
       - name: Commit and Push SVGs
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@://github.com"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add stats.svg languages.svg streak.svg
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update analytics SVGs" && git push)
