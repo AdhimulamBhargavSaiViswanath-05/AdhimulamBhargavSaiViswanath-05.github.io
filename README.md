@@ -1,29 +1,25 @@
-# ABSV Portfolio
+# Adhimulam Bhargav Sai Viswanath
 
-Static React + Vite portfolio rebuilt with Radix UI and ready for GitHub Pages.
+### 🚀 AI/ML Student & Developer
+I am **Adhimulam Bhargav Sai Viswanath**, a Computer Science and Engineering student specializing in Artificial Intelligence and Machine Learning at the **Vasireddy Venkatadri Institute of Technology (VVIT)**.
 
-## Local development
+🔗 **Connect with me:** 
+[![LinkedIn](https://shields.io)](https://linkedin.com) [![Portfolio](https://shields.io)](https://github.io)
 
-```bash
-npm install
-npm run dev
-```
+---
 
-## Production build
+## 🛠️ Core Skills
+- **AI & Machine Learning:** Python, PyTorch, Scikit-Learn, NLP, Data Science (Pandas, NumPy)
+- **Cloud & DevOps:** AWS Cloud Foundations, Linux (RHCSA Trained), Git/GitHub
+- **Software Engineering:** Java, C, SQL, JavaScript, React
 
-```bash
-npm run build
-```
+---
 
-## GitHub Pages deployment process
+## 📊 GitHub Statistics
+These metrics update automatically based on my public repositories:
 
-1. Push the `main` branch to GitHub.
-2. Open repository settings and enable GitHub Pages from the `GitHub Actions` source.
-3. Keep the workflow file at `.github/workflows/deploy.yml`.
-4. Every push to `main` will build the site and deploy the `dist` folder automatically.
+![Bhargav's GitHub Stats](https://vercel.app)
+![Top Langs](https://vercel.app)
 
-## Performance notes
-
-- The app is built as a static site, so there is no server runtime.
-- `vite.config.js` uses a relative base path, which keeps the site portable on GitHub Pages.
-- The heaviest assets are already bundled locally and the build pipeline ships only the optimized output in `dist`.
+---
+*Maintained by Adhimulam Bhargav Sai Viswanath. Last updated via automated workflows.*
