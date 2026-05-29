@@ -5,14 +5,11 @@ on:
     - cron: '0 0 * * *' # Runs daily at midnight
   workflow_dispatch: # Allows manual trigger
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Clears the Node 20 deprecation warning
-
 jobs:
   update-stats:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # Crucial fix to allow the bot to save files
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -22,7 +19,7 @@ jobs:
         uses: cicirello/user-statistician@v1
         with:
           image-file: stats.svg
-          max-languages: 0 # Disables the language block on this card
+          max-languages: 0 
           colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
       # 2. Generate Languages Analytics breakdown 
@@ -30,10 +27,10 @@ jobs:
         uses: cicirello/user-statistician@v1
         with:
           image-file: languages.svg
-          max-languages: 8 # Shows up to 8 top programming languages
+          max-languages: 8 
           colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
-      # Commit the local SVG assets back into the branch
+      # Commit the local SVG assets back into the branch safely
       - name: Commit and Push SVGs
         run: |
           git config --global user.name "github-actions[bot]"
