@@ -2,8 +2,8 @@ name: Generate GitHub Profile Stats
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs automatically every day at midnight
-  workflow_dispatch: # Allows you to manually trigger it anytime
+    - cron: '0 0 * * *' # Runs daily at midnight
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   update-stats:
@@ -14,16 +14,33 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Generate Custom Stats SVG
+      # 1. Core Profile Stats Card
+      - name: Generate Profile Stats
         uses: cicirello/user-statistician@v1
         with:
-          image-file: github-stats.svg
+          image-file: stats.svg
+          include-languages: false
+          custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
+
+      # 2. Languages Analytics Card
+      - name: Generate Language Stats
+        uses: cicirello/user-statistician@v1
+        with:
+          image-file: languages.svg
           include-languages: true
           custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
-      - name: Commit and Push generated image
+      # 3. Commit Streak Card
+      - name: Generate Streak Stats
+        uses: cicirello/activity-graphs@v1
+        with:
+          image-file: streak.svg
+          custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d,graphs=58a6ff,points=ff7b72'
+
+      # Commit all three generated images back to your repo
+      - name: Commit and Push SVGs
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add github-stats.svg
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update profile stats SVG" && git push)
+          git config --global user.email "github-actions[bot]@://github.com"
+          git add stats.svg languages.svg streak.svg
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update analytics SVGs" && git push)
