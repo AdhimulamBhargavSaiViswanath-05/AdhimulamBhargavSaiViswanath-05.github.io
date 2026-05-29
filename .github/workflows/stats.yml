@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 1. Core Profile Stats Card
+      # 1. Generate Core Overview Statistics
       - name: Generate Profile Stats
         uses: cicirello/user-statistician@v1
         with:
@@ -22,7 +22,7 @@ jobs:
           include-languages: false
           custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
-      # 2. Languages Analytics Card
+      # 2. Generate Languages Analytics breakdown 
       - name: Generate Language Stats
         uses: cicirello/user-statistician@v1
         with:
@@ -30,17 +30,10 @@ jobs:
           include-languages: true
           custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d'
 
-      # 3. Commit Streak Card (FIXED REPOSITORY NAME)
-      - name: Generate Streak Stats
-        uses: cicirello/user-activity-graphs@v1
-        with:
-          image-file: streak.svg
-          custom-colors: 'bg=0d1117,title=58a6ff,text=c9d1d9,icons=8b949e,border=30363d,graphs=58a6ff,points=ff7b72'
-
-      # Commit all three generated images back to your repo
+      # Commit the local SVG assets back into the branch
       - name: Commit and Push SVGs
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add stats.svg languages.svg streak.svg
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update analytics SVGs" && git push)
+          git add stats.svg languages.svg
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update profile analytics metrics" && git push)
