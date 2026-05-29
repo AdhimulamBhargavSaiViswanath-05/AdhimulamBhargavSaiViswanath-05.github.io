@@ -4,7 +4,9 @@
 I am **Adhimulam Bhargav Sai Viswanath**, a Computer Science and Engineering student specializing in Artificial Intelligence and Machine Learning at the **Vasireddy Venkatadri Institute of Technology (VVIT)**.
 
 🔗 **Connect with me:** 
-[![LinkedIn](https://shields.io)](https://linkedin.com) [![Portfolio](https://shields.io)](https://github.io)
+<a href="[https://linkedin.com](https://www.linkedin.com/in/adhimulambhargavsaiviswanath/)"><img src="https://shields.io" alt="LinkedIn"></a>
+<a href="[https://github.io](http://adhimulambhargavsaiviswanath-05.github.io/)"><img src="https://shields.io" alt="Portfolio"></a>
+
 
 ---
 
@@ -16,10 +18,9 @@ I am **Adhimulam Bhargav Sai Viswanath**, a Computer Science and Engineering stu
 ---
 
 ## 📊 GitHub Statistics
-These metrics update automatically based on my public repositories:
+These metrics update automatically via local GitHub Actions:
 
-![Bhargav's GitHub Stats](https://vercel.app)
-![Top Langs](https://vercel.app)
+![Bhargav's GitHub Stats](./github-stats.svg)
 
 ---
 *Maintained by Adhimulam Bhargav Sai Viswanath. Last updated via automated workflows.*
