@@ -31,8 +31,9 @@ const asset = (name) => {
 export const site = {
   name: 'Adhimulam Bhargav Sai Viswanath',
   initials: 'ABSV',
-  tagline: 'Aspiring AI Engineer | Passionate about Machine Learning and Data Science',
-  role: 'Artificial Intelligence • Machine Learning • NLP • Cloud • UI Systems',
+  tagline:
+    'Building fintech-ready machine learning and data science systems with product-minded rigor, scalable thinking, and a focus on measurable impact.',
+  role: 'AI Engineer Intern @ Paytm | B.Tech CSE - AI & ML Student at VVIT | Aspiring AI Engineer | Passionate about Machine Learning and Data Science',
   resume: asset('resume.pdf'),
   profile: asset('profile.jpg'),
   email: 'bhargavsaiadhimulam12@gmail.com',
@@ -65,9 +66,9 @@ export const heroStats = [
 ];
 
 export const aboutPoints = [
-  'Building AI and ML systems with an emphasis on clarity, speed, and practical outcomes.',
-  'Hands-on experience across OCR pipelines, NLP preprocessing, optimization, and regression modeling.',
-  'Comfortable shipping polished static experiences, supporting cloud deployment, and iterating on UI/UX details.'
+  'Currently an AI Engineer Intern at Paytm (One97 Communications Limited), Bengaluru, starting June 2026.',
+  'Building machine learning and data science systems with an emphasis on clarity, scale, and practical fintech impact.',
+  'Hands-on experience across OCR pipelines, NLP preprocessing, optimization, regression modeling, and polished product delivery.'
 ];
 
 export const skillGroups = [
@@ -167,6 +168,16 @@ export const projects = [
 ];
 
 export const experience = [
+  {
+    title: 'AI Engineer Intern',
+    org: 'Paytm · Internship',
+    period: 'Jun 2026 - Present · 1 mo',
+    logo: asset('paytm_logo.jpg'),
+    details: [
+      'Bengaluru, Karnataka, India · On-site.',
+      'Started as an AI Engineer Intern and am currently gaining exposure to real-world AI workflows, data-driven systems, and problem-solving in a fintech environment while learning from industry practices.'
+    ]
+  },
   {
     title: 'AWS Cloud Computing & DevOps Intern',
     org: 'APSSDC x AWS Academy',

@@ -166,7 +166,7 @@ function App() {
           <SectionHeading
             eyebrow="Foundation"
             title="About"
-            description="A sharper portfolio story built around AI, ML, and product-minded engineering while keeping your original identity intact."
+            description="Currently an AI Engineer Intern at Paytm in Bengaluru, building machine learning and data science solutions with a fintech-first mindset."
           />
 
           <div className="about-grid">
@@ -192,7 +192,7 @@ function App() {
                 </div>
                 <div>
                   <span>Focus</span>
-                  <strong>ML, NLP, cloud, and UI systems</strong>
+                  <strong>ML, data science, and scalable fintech systems</strong>
                 </div>
                 <div>
                   <span>Style</span>
@@ -303,21 +303,23 @@ function App() {
                   </span>
                 </div>
                 <ul className="check-list">
-                  {item.details.map((detail) => (
+                  {item.details?.map((detail) => (
                     <li key={detail}>
                       <StarIcon />
                       <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="project-links">
-                  {item.links.map((link) => (
-                    <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                      {link.label}
-                      <ArrowTopRightIcon />
-                    </a>
-                  ))}
-                </div>
+                {item.links?.length ? (
+                  <div className="project-links">
+                    {item.links.map((link) => (
+                      <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                        {link.label}
+                        <ArrowTopRightIcon />
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             ))}
           </div>
