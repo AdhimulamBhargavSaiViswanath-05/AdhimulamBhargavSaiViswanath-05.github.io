@@ -171,7 +171,7 @@ export const experience = [
   {
     title: 'AI Engineer Intern',
     org: 'Paytm · Internship',
-    period: 'Jun 2026 - Present · 1 mo',
+    period: 'Jun 2026 - Present',
     logo: asset('paytm_logo.jpg'),
     details: [
       'Bengaluru, Karnataka, India · On-site.',
