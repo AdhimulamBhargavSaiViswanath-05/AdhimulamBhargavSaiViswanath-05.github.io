@@ -33,7 +33,7 @@ export const site = {
   initials: 'ABSV',
   tagline:
     'Building fintech-ready machine learning and data science systems with product-minded rigor, scalable thinking, and a focus on measurable impact.',
-  role: 'AI Engineer Intern @ Paytm | B.Tech CSE - AI & ML Student at VVIT | Aspiring AI Engineer | Passionate about Machine Learning and Data Science',
+  role: 'AI Engineer Intern @ Paytm | B.Tech CSE (AI & ML) Student at VVIT | Aspiring AI Engineer',
   resume: asset('Resume.pdf'),
   profile: asset('profile.jpg'),
   email: 'bhargavsaiadhimulam12@gmail.com',
