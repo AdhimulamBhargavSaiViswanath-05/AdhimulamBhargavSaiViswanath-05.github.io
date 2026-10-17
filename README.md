@@ -1,104 +1,141 @@
-## [ADHIMULAM BHARGAV SAI VISWANATH](https://www.linkedin.com/in/adhimulambhargavsaiviswanath/)
+<div align="center">
 
-B.Tech CSE - AI & ML Student at VVIT | Aspiring AI Engineer | Passionate about Machine Learning and Data Science
+# ADHIMULAM BHARGAV SAI VISWANATH
 
----
+**AI Engineer Intern @ Paytm | B.Tech CSE (AI & ML) Student at VVIT | Aspiring AI Engineer**
 
-<!-- Visual-first, dark-themed snapshot: minimal text, informative visuals -->
+*Building practical AI/ML systems for real-world problems*
 
-<p align="center">
-  <img src="assets/profile-CqzvHd7q-CqzvHd7q.jpg" alt="profile" width="110" style="border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,0.6)" />
+<p>
+  <a href="https://adhimulambhargavsaiviswanath-05.github.io/"><img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
+  <a href="https://www.linkedin.com/in/adhimulambhargavsaiviswanath/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge" alt="LinkedIn"/></a>
+  <a href="mailto:bhargavsaiadhimulam12@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
 </p>
 
-<!-- Animated hero + compact widgets (SVG animation; no JS) -->
-<div align="center" style="margin:8px 0 18px 0;background:#04050a;padding:14px;border-radius:12px;">
-  <svg width="100%" height="200" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" style="border-radius:8px;">
-    <defs>
-      <linearGradient id="bg2" x1="0" x2="1">
-        <stop offset="0%" stop-color="#041021" />
-        <stop offset="100%" stop-color="#071526" />
-      </linearGradient>
-      <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#6ee7c8" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.06"/>
-      </radialGradient>
-    </defs>
-    <rect width="1200" height="200" fill="url(#bg2)" rx="10" />
-    <g transform="translate(60,44)">
-      <text x="0" y="28" fill="#ffffff" font-size="26" font-family="Inter, system-ui" font-weight="700">ADHIMULAM BHARGAV SAI VISWANATH</text>
-      <text x="0" y="54" fill="#9fb1c8" font-size="13" font-family="Inter, system-ui">B.Tech CSE - AI & ML Student at VVIT • Aspiring AI Engineer • Machine Learning & Data Science</text>
-    </g>
-    <!-- animated ring -->
-    <g transform="translate(930,80)">
-      <circle cx="0" cy="0" r="8" fill="url(#pulse)">
-        <animate attributeName="r" values="6;18;6" dur="3.6s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="-34" cy="36" r="6" fill="#60f0d6">
-        <animate attributeName="cy" values="36;10;36" dur="5s" repeatCount="indefinite"/>
-      </circle>
-    </g>
-  </svg>
+<p>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Education-B.Tech%20CSE%20%28AI%20%26%20ML%29%20%7C%20VVIT-29A3E8?style=flat-square"><img src="https://img.shields.io/badge/Education-B.Tech%20CSE%20%28AI%20%26%20ML%29%20%7C%20VVIT-0288D1?style=flat-square" alt="Education"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Current%20Role-AI%20Engineer%20Intern%20%40%20Paytm-00BAF2?style=flat-square"><img src="https://img.shields.io/badge/Current%20Role-AI%20Engineer%20Intern%20%40%20Paytm-00A0D6?style=flat-square" alt="Current Role"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Location-Tenali%2C%20India%20%7C%20Open%20to%20Relocation-43A047?style=flat-square"><img src="https://img.shields.io/badge/Location-Tenali%2C%20India%20%7C%20Open%20to%20Relocation-2E7D32?style=flat-square" alt="Location"/></picture>
+</p>
 
-  <div style="display:flex;gap:12px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
-    <img src="https://github-readme-stats.vercel.app/api?username=AdhimulamBhargavSaiViswanath-05&show_icons=true&theme=dark&count_private=true" alt="GitHub stats" style="border-radius:10px;box-shadow:0 12px 40px rgba(2,6,23,0.6);" width="380"/>
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AdhimulamBhargavSaiViswanath-05&layout=compact&theme=dark" alt="Top languages" style="border-radius:10px;box-shadow:0 12px 40px rgba(2,6,23,0.6);" width="240"/>
-  </div>
-  <div style="margin-top:10px;">
-    <a href="assets/resume-xLJ7Y0Il-xLJ7Y0Il.pdf"><img src="https://img.shields.io/badge/Resume-Download-0ea5a4?style=for-the-badge&logo=adobe" alt="resume"/></a>
-    <a href="mailto:bhargavsaiadhimulam12@gmail.com" style="margin-left:8px"><img src="https://img.shields.io/badge/Email-bhargavsaiadhimulam12%40gmail.com-important?style=for-the-badge&logo=gmail" alt="email"/></a>
-  </div>
+<img src="https://komarev.com/ghpvc/?username=AdhimulamBhargavSaiViswanath-05&label=Profile%20Views&color=0e75b6&style=flat" alt="Profile Views"/>
+
 </div>
 
-### Quick Visual Facts
+---
+
+## 👋 About Me
+
+I am a B.Tech Computer Science (AI & ML) student at **Vasireddy Venkatadri Institute of Technology (VVIT)** and an **AI Engineer Intern at Paytm**. I apply AI/ML expertise, programming skills, and analytical problem-solving to build practical, scalable solutions for real-world challenges.
+
+I enjoy working across the full cycle of an idea: researching it, designing it, building it, and shipping it. I bring hands-on industry exposure, research experience, and team leadership to everything I work on.
+
+- 🎓 B.Tech CSE (AI & ML) at VVIT, 2023 – 2027
+- 💼 AI Engineer Intern at Paytm, working on AI and analytics platforms for fintech
+- 🤝 Apps Developer & Frontend Designer at AI-HUB@VVIT
+- 📍 Based in Tenali, India, and open to relocation
+
+---
+
+## 💼 Experience
+
+**AI Engineer Intern · Paytm** &nbsp;|&nbsp; *Jun 2026 – Present*
+- Contributing to AI and analytics platform development for fintech applications.
+- Developing and debugging React-based features, working with Git, Bitbucket, Jira, and agile workflows.
+
+**AWS Cloud Computing & DevOps Intern (Team Lead) · APSSDC x AWS Academy** &nbsp;|&nbsp; *May 2026 – Jul 2026*
+- Led a team to develop and deploy a full-stack application during the AWS Cloud & DevOps internship.
+- Gained practical experience in AWS Cloud, Linux, DevOps, GitHub, and application deployment.
+
+**Apps Developer & Frontend Designer (UI/UX) · AI-HUB@VVIT** &nbsp;|&nbsp; *Jan 2025 – Present*
+- Contributing to AI platform development, UI/UX design, and deployment of student-led AI solutions.
+
+**Class Representative · Dept. of CSM, VVIT** &nbsp;|&nbsp; *2023 – Present*
+- Acting as the communication bridge between faculty and students while coordinating academic activities.
+
+---
+
+## 🛠️ Skills
+
+**Languages & Core**
+
+<p>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Python-4B8BBE?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/></picture>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/C-3D8BD0?style=for-the-badge&logo=c&logoColor=white"><img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/SQL-5B9BD5?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="SQL"/></picture>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/CSS3-2D8CDB?style=for-the-badge&logo=css&logoColor=white"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white" alt="CSS3"/></picture>
+</p>
+
+**AI & Machine Learning**
+
+<p>
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch"/>
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="scikit-learn"/>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Pandas-E70488?style=for-the-badge&logo=pandas&logoColor=white"><img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/NumPy-4DABCF?style=for-the-badge&logo=numpy&logoColor=013243"><img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Matplotlib-3F8EC4?style=for-the-badge"><img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge" alt="Matplotlib"/></picture>
+</p>
+
+**Web, Cloud & Tools**
+
+<p>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=20232A"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge"><img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge" alt="AWS"/></picture>
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/GitHub-F0F6FC?style=for-the-badge&logo=github&logoColor=181717"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Bitbucket-2684FF?style=for-the-badge&logo=bitbucket&logoColor=white"><img src="https://img.shields.io/badge/Bitbucket-0052CC?style=for-the-badge&logo=bitbucket&logoColor=white" alt="Bitbucket"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Jira-2684FF?style=for-the-badge&logo=jira&logoColor=white"><img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira"/></picture>
+</p>
+
+**Areas of Expertise**
+- **AI & ML:** Regression, Decision Trees, K-Means, CNNs, NLP (text preprocessing, stemming), Constraint Satisfaction Problems
+- **Data Analysis:** Exploratory and explanatory data analysis, visualization
+- **Core CS:** Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks
+- **Web:** Responsive web design, GitHub Pages deployment
+- **Soft Skills:** Problem solving, team leadership, collaboration, presentation
+
+---
+
+## 🎓 Education
+
+**B.Tech – Computer Science & Engineering (AI & ML)**
+Vasireddy Venkatadri Institute of Technology (VVIT) · 2023 – 2027 · CGPA: 8.38 / 10.0 (up to III-II)
+
+---
+
+## 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Degree-B.Tech%20(CSE%20AI%26ML)-2b6cb0?style=for-the-badge&logo=academia" alt="degree" />
-  <img src="https://img.shields.io/badge/Location-Tenali-blueviolet?style=for-the-badge&logo=googlemaps" alt="location" />
-  <a href="mailto:bhargavsaiadhimulam12@gmail.com"><img src="https://img.shields.io/badge/Email-bhargavsaiadhimulam12%40gmail.com-important?style=for-the-badge&logo=gmail" alt="email"/></a>
-  <a href="assets/resume-xLJ7Y0Il-xLJ7Y0Il.pdf"><img src="https://img.shields.io/badge/Resume-Download-0ea5a4?style=for-the-badge&logo=adobe" alt="resume"/></a>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=AdhimulamBhargavSaiViswanath-05&show_icons=true&theme=github_dark&hide_border=true&count_private=true"><img height="180" src="https://github-readme-stats.vercel.app/api?username=AdhimulamBhargavSaiViswanath-05&show_icons=true&theme=default&count_private=true" alt="GitHub Stats"/></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=AdhimulamBhargavSaiViswanath-05&layout=compact&theme=github_dark&hide_border=true&langs_count=8"><img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AdhimulamBhargavSaiViswanath-05&layout=compact&theme=default&langs_count=8" alt="Top Languages"/></picture>
+</p>
+
+<p align="center">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=AdhimulamBhargavSaiViswanath-05&theme=github-dark&hide_border=true"><img src="https://streak-stats.demolab.com/?user=AdhimulamBhargavSaiViswanath-05&theme=default" alt="GitHub Streak"/></picture>
 </p>
 
 ---
 
-## 🧠 Who I Am
+## 🤝 Let's Connect
 
-```python
-class AdhimulamBhargavSaiViswanath:
-  def __init__(self):
-    self.role       = "Aspiring AI Engineer • Apps Developer"
-    self.location   = "Tenali, Andhra Pradesh"
-    self.education  = "B.Tech CSE (AI & ML) — VVIT (2023–2027)"
-    self.resume     = "assets/resume-xLJ7Y0Il-xLJ7Y0Il.pdf"
-    self.expertise  = [
-      "OCR & NLP pipelines",
-      "Modeling: PyTorch, Scikit-Learn",
-      "Deployment: AWS, Docker, GitHub Pages",
-      "Frontend: React, Vite, UI/UX",
-    ]
-    self.currently  = [
-      "Maintaining portfolio & AI-HUB projects",
-      "Building timetable generation and transliteration systems",
-    ]
-    self.contact    = {"email": "bhargavsaiadhimulam12@gmail.com", "linkedin": "https://www.linkedin.com/in/adhimulambhargavsaiviswanath/"}
+I'm always open to conversations about AI/ML, internships, collaborations, and new opportunities. Feel free to reach out.
 
-  def mission(self):
-    return "Build practical AI systems that are performant, interpretable, and useful."
-```
-
-> Visual-first summary: the code-style block condenses key facts so readers scan identity and focus visually on the widgets and project thumbnails above.
-
-### Featured Projects (visual)
+| | |
+|---|---|
+| 👤 **Name** | Adhimulam Bhargav Sai Viswanath |
+| ✉️ **Email** | [bhargavsaiadhimulam12@gmail.com](mailto:bhargavsaiadhimulam12@gmail.com) |
+| 💼 **LinkedIn** | [linkedin.com/in/adhimulambhargavsaiviswanath](https://www.linkedin.com/in/adhimulambhargavsaiviswanath/) |
+| 🌐 **Portfolio** | [adhimulambhargavsaiviswanath-05.github.io](https://adhimulambhargavsaiviswanath-05.github.io/) |
+| 🐙 **GitHub** | [AdhimulamBhargavSaiViswanath-05](https://github.com/AdhimulamBhargavSaiViswanath-05) |
+| 📍 **Location** | Tenali, India · Open to relocation |
 
 <p align="center">
-  <a href="https://github.com/SIH-2025-Word-Weavers"><img src="assets/LipiSathi_Logo-B7E7mrm7-B7E7mrm7.png" alt="LipiSathi" width="180" style="border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5)"/></a>
-  <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/TimeTableGeneration"><img src="assets/NLP_Logo-i9nBPrXF-i9nBPrXF.png" alt="Timetable" width="180" style="border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-left:18px"/></a>
-  <a href="https://github.com/AdhimulamBhargavSaiViswanath-05/bus-traffic-price-prediction"><img src="assets/Bus_Price_Prediction-BFgiGR7m-BFgiGR7m.png" alt="BusPrediction" width="180" style="border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-left:18px"/></a>
+  <a href="https://www.linkedin.com/in/adhimulambhargavsaiviswanath/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge" alt="LinkedIn"/></a>
+  <a href="https://github.com/AdhimulamBhargavSaiViswanath-05"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/GitHub-F0F6FC?style=for-the-badge&logo=github&logoColor=181717"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></picture></a>
+  <a href="mailto:bhargavsaiadhimulam12@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+  <a href="https://adhimulambhargavsaiviswanath-05.github.io/"><img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
 </p>
-
-<p align="center" style="color:#9fb1c8">Hover project images for quick context on GitHub — visuals show project identity before you read details.</p>
-
----
-
-*This README emphasizes visuals: live GitHub stats, project thumbnails, and compact badges. If you want an animated banner GIF or a different arrangement (e.g., a 2-row project gallery, or an interactive SVG), tell me which images to use and I'll update it.*
-
-*Maintained by Adhimulam Bhargav Sai Viswanath.*
